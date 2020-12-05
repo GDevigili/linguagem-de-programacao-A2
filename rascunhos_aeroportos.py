@@ -48,3 +48,43 @@ baseline_cidade_paises["PercentOfBaseline"].plot.bar()
 plt.show()
 
 #######################################################
+
+df["NUMERO DE VOOS"] = data1.PercentOfBaseline
+print(df.head(3))
+
+print(df.describe())
+
+independentes = df.drop("NUMERO DE VOOS", axis = 1)
+dependente = df["NUMERO DE VOOS"]
+
+#Dividir o conjunto de dados entre treino e teste
+
+X_treino, X_teste, Y_treino, Y_teste = model_selection.train_test_split(independentes, dependente, test_size = 0.4, random_state = 1)
+print(X_treino.shape)
+print(X_teste.shape)
+print(Y_treino.shape)
+print(Y_teste.shape)
+
+model = linear_model.LinearRegression()
+model.fit(X_treino, Y_treino)
+
+Y_previsto = model.predict(X_teste)
+
+plt.scatter(Y_teste, Y_previsto)
+plt.xlabel("Voos")
+plt.ylabel("Voos Previstos")
+plt.title("Voos x Voos Previstos")
+plt.show()
+
+plt.scatter(model.predict(X_treino), model.predict(X_treino) - Y_treino, color = "green", s =10, label = "Treino")
+plt.scatter(model.predict(X_teste), model.predict(X_teste) - Y_teste, color = "red", s =10, label = "Teste")
+plt.show()
+
+print("\n------------------------------------------------\n")
+print(model.score(X_treino, Y_treino))
+print("Intercept:", model.intercept_)
+print("Coef:", model.coef_)
+
+print("\n------------------------------------------------\n")
+mse = metrics.mean_squared_error(Y_teste, model.predict(X_teste))
+print(mse)
