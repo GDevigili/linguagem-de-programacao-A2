@@ -1,4 +1,4 @@
-import conexao as con
+import Conexao as con
 
 #FAZER CLASSE AQUI
 
