@@ -65,7 +65,6 @@ class Conexao:
               SELECT TOP(1) * 
               FROM covid.covid_impact_on_airport_traffic;
               """) 
-             
               
         for r in cursor.fetchall():
             print(r)

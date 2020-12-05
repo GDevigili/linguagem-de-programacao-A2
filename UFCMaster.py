@@ -1,12 +1,9 @@
 import conexao as con
-import pandas as pd
-import numpy as np
-from matplotlib import pyplot as plt
-from sklearn import datasets, linear_model, metrics, model_selection
 
 #FAZER CLASSE AQUI
 
 class UFCMaster:
+    # Cada função é referente à uma pergunta
     
     def __init__(self):
         self.conexao = con.Conexao()

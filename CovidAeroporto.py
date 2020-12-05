@@ -1,37 +1,41 @@
 import conexao as con
-import pandas as pd
-import numpy as np
-from matplotlib import pyplot as plt
-from sklearn import datasets, linear_model, metrics, model_selection
 
 #FAZER CLASSE AQUI
 
 class CovidAeroporto():
+    # Cada função é referente à uma pergunta
     
     def __init__(self):
         self.conexao = con.Conexao()
         self.df = self.conexao.getCovidImpactDataFrame()
         self.conexao.fecharConexao()    
-    
-    # #QUESTÕES IMPACTOS DO COVID NOS AEROPORTOS:
-    
+        
     # # Em quais países o número de voos aumentou comparado com o período de baseline?
     def voosPorBaseline(self):
         pass
     
     # # Em que cidades dos EUA o número de voos aumentou?
+    def aumentoVoosPorCidade(self):
+        pass
+    
     # # Em que cidades dos EUA o número de voos diminuiu?
-    def voosPorCidade(self):
-        pass    #podemos inserir um argumento opcional da ordenação que os dados vão vir
+    def reducaoVoosPorCidade(self):
+        pass
     
     # # Qual dia teve o maior número de voos internacionalmente?
+    def maiorNumeroVoos(self):
+        pass
+    
     # # Qual dia teve o menor número de voos internacionalmente?
-    def voosPorDia(self):
-        pass    #podemos inserir um argumento opcional da ordenação que os dados vão vir
+    def menorNumeroVoos(self):
+        pass
     
     # # Comparando o dia com mais voos com o mesmo dia da semana no período de baseline, o número de voos aumentou ou abaixou?
+    def diaComMaisVoos(self):
+        pass
+    
     # # Comparando o dia com menos voos com o mesmo dia da semana no período de baseline, o número de voos aumentou ou abaixou?
-    def voosPorDiaSemana(self):
+    def diaComMenosVoos(self):
         pass
     
     # # Qual estado americano tem o maior centroide de aeroportos?
