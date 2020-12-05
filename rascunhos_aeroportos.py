@@ -33,3 +33,18 @@ print(df.head())
 
 df = pd.DataFrame(data1.Country) # Pais
 print(df.head())
+
+#######################################################
+
+##############PLOT BASELINE POR CIDADE/PAIS###############
+print(data1.groupby("City").mean())
+print(data1.groupby("Country").mean())
+print(data1.groupby(["City", "Country"]).mean())
+
+baseline_cidade_paises = data1.groupby(["City", "Country"]).mean()
+print(type(baseline_cidade_paises))
+
+baseline_cidade_paises["PercentOfBaseline"].plot.bar()
+plt.show()
+
+#######################################################

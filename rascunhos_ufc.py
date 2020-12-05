@@ -34,7 +34,7 @@ print(df.head())
 
 #######################################################
 
-##############PLOT VENCEDORES POR GENERO###############
+##############PLOT NUMERO DE ROUNDS POR PESO/GENERO###############
 print(data2.groupby("weight_class").mean())
 print(data2.groupby("gender").mean())
 print(data2.groupby(["weight_class", "gender"]).mean())
@@ -45,13 +45,12 @@ print(type(rounds_por_peso_genero))
 rounds_por_peso_genero["no_of_rounds"].plot.bar()
 plt.show()
 
+#######################################################
 
 df["NUMERO DE ROUNDS"] = data2.no_of_rounds
 print(df.head(3))
 
 print(df.describe())
-
-#######################################################
 
 independentes = df.drop("NUMERO DE ROUNDS", axis = 1)
 dependente = df["NUMERO DE ROUNDS"]
