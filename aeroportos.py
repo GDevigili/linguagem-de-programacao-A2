@@ -4,37 +4,39 @@ import numpy as np
 from matplotlib import pyplot as plt
 from sklearn import datasets, linear_model, metrics, model_selection
 
-def estabeleceConexao():
-    conexao = con.Conexao()
-    conexao.verificacaoConexao()
-    conexao.fecharConexao()
+#FAZER CLASSE AQUI
 
-estabeleceConexao()
-
-# #QUESTÕES IMPACTOS DO COVID NOS AEROPORTOS:
-
-# # Em quais países o número de voos aumentou comparado com o período de baseline?
-def voos_por_baseline():
-    pass
-
-# # Em que cidades dos EUA o número de voos aumentou?
-# # Em que cidades dos EUA o número de voos diminuiu?
-def voos_por_cidade():
-    pass    #podemos inserir um argumento opcional da ordenação que os dados vão vir
-
-# # Qual dia teve o maior número de voos internacionalmente?
-# # Qual dia teve o menor número de voos internacionalmente?
-def voos_por_dia():
-    pass    #podemos inserir um argumento opcional da ordenação que os dados vão vir
-
-# # Comparando o dia com mais voos com o mesmo dia da semana no período de baseline, o número de voos aumentou ou abaixou?
-# # Comparando o dia com menos voos com o mesmo dia da semana no período de baseline, o número de voos aumentou ou abaixou?
-def voos_por_dia_semana():
-    pass
-
-# # Qual estado americano tem o maior centroide de aeroportos?
-def centroide_por_estado():
-    pass
+class CovidAeroporto():
+    
+    def __init__(self):
+        self.conexao = con.Conexao()
+        self.df = self.conexao.getCovidImpactDataFrame()
+        self.conexao.fecharConexao()    
+    
+    # #QUESTÕES IMPACTOS DO COVID NOS AEROPORTOS:
+    
+    # # Em quais países o número de voos aumentou comparado com o período de baseline?
+    def voosPorBaseline(self):
+        pass
+    
+    # # Em que cidades dos EUA o número de voos aumentou?
+    # # Em que cidades dos EUA o número de voos diminuiu?
+    def voosPorCidade(self):
+        pass    #podemos inserir um argumento opcional da ordenação que os dados vão vir
+    
+    # # Qual dia teve o maior número de voos internacionalmente?
+    # # Qual dia teve o menor número de voos internacionalmente?
+    def voosPorDia(self):
+        pass    #podemos inserir um argumento opcional da ordenação que os dados vão vir
+    
+    # # Comparando o dia com mais voos com o mesmo dia da semana no período de baseline, o número de voos aumentou ou abaixou?
+    # # Comparando o dia com menos voos com o mesmo dia da semana no período de baseline, o número de voos aumentou ou abaixou?
+    def voosPorDiaSemana(self):
+        pass
+    
+    # # Qual estado americano tem o maior centroide de aeroportos?
+    def centroidePorEstado(self):
+        pass
     
 
 # print(data1.keys())
@@ -55,5 +57,3 @@ def centroide_por_estado():
 
 # viagens_por_aeroporto["PercentOfBaseline"].plot.bar()
 # plt.show()
-
-

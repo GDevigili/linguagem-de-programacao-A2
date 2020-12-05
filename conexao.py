@@ -1,4 +1,5 @@
 import pyodbc
+import pandas as pd
 
 server = "fgv-db-server.database.windows.net"
 database = "fgv-db"
@@ -61,12 +62,21 @@ class Conexao:
         print("\n\n\n")        
         #Seleciona o primeiro item de 'covid_impact_on_airport_traffic'          
         cursor.execute(""" 
-              SELECT TOP(1) * FROM covid.covid_impact_on_airport_traffic;""") 
+              SELECT TOP(1) * 
+              FROM covid.covid_impact_on_airport_traffic;
+              """) 
              
               
         for r in cursor.fetchall():
             print(r)
-        
+    
+    # Isso vai para a respectiva classe
+    def getUfcDataFrame(self):
+        return pd.read_sql("SELECT * FROM ufc.ufc_master;", self.conexao)
+    
+    def getCovidImpactDataFrame(self):
+        return pd.read_sql("SELECT * FROM covid.covid_impact_on_airport_traffic;", self.conexao)
+    
     def fecharConexao(self):
         self.conexao.close()
         
