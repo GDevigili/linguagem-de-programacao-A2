@@ -6,60 +6,66 @@ database = "fgv-db"
 username = "student"
 password = "@dsInf123"
 driver = "{ODBC Driver 17 for SQL Server}"
+initialCatalog = "fgv-db";
 
-connection = pyodbc.connect("DRIVER="+driver
+class Conexao:
+    def __init__(self):
+        self.connection = pyodbc.connect("DRIVER="+driver
                             + ";SERVER="+server
+                            + ";Initial Catalog ="+initialCatalog
                             + ";PORT=1433;DATABASE="
                             + database+";UID="+username+";PWD="
                             + password)
-
-
-cursor = connection.cursor()
-
-
-#Sample select query
-cursor.execute("SELECT @@version;") 
-row = cursor.fetchone() 
-while row: 
-    print(row[0])
-    row = cursor.fetchone()
-
-cursor.execute(""" 
-        SELECT name, database_id, create_date  
-        FROM sys.databases ;""") 
-for r in cursor.fetchall():
-    print(r)
-
-
-# nomedb = u"fgv-db"
-
-# SELECT = """\
-#             SELECT *  
-#             FROM ? ;"""
-            
-# cursor.execute(SELECT, (nomedb)) 
         
-# for r in cursor.fetchall():
-#     print(r)
-    
-    
-# UPDATE_SQL3 = """
-#     SELECT * FROM 
-#     WHERE
-#         STATION_ID = ?
-# """
+    def verificacao_Conexao(self):
+        cursor = self.connection.cursor()
+        
+        
+        #Informacoes sobre as tables (db, schema, nome, se é base table ou view)
+        
+        cursor.execute(""" 
+              SELECT * FROM information_schema.TABLES 
+                  WHERE TABLE_NAME = 'ufc_master' OR TABLE_NAME = 'covid_impact_on_airport_traffic'""") 
+                
+        for r in cursor.fetchall():
+            print(r)
+        
+        print("\n\n\n")
+        
+        #Mostra todas as colunas da table 'covid_impact_on_airport_traffic'
+        cursor.execute(""" 
+              SELECT COLUMN_NAME 
+                  FROM INFORMATION_SCHEMA.COLUMNS
+                  WHERE TABLE_NAME = 'covid_impact_on_airport_traffic'""") 
+                
+        for r in cursor.fetchall():
+            print(r)
+            
+        print("\n\n\n")
+        
+        #Mostra todas as colunas da table 'ufc_master'
+        cursor.execute(""" 
+              SELECT COLUMN_NAME 
+                  FROM INFORMATION_SCHEMA.COLUMNS
+                  WHERE TABLE_NAME = 'ufc_master'""") 
+                
+        for r in cursor.fetchall():
+            print(r)
+        
+        print("\n\n\n")
+        #Seleciona o primeiro registro de 'ufc_master'
+        cursor.execute(""" 
+              SELECT TOP(1) * FROM ufc.ufc_master;""") 
+        
+        print("\n\n\n")        
+        #Seleciona o primeiro item de 'covid_impact_on_airport_traffic'          
+        cursor.execute(""" 
+              SELECT TOP(1) * FROM covid.covid_impact_on_airport_traffic;""") 
+             
+              
+        for r in cursor.fetchall():
+            print(r)
+        self.connection.close()
 
-# conn = pyodbc.connect('DRIVER={SQL Server};SERVER=local;DATABASE=DB;UID=me;PWD=pass')
-# cursor = conn.cursor()
-
-# cursor.execute(UPDATE_SQL3 %
-#                            (name,
-#                             title,
-#                             active,
-#                             id
-#                             ))
-
-
-
-    
-# connection.close()
+conexao = Conexao()
+conexao.verificacao_Conexao()
