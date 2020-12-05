@@ -15,4 +15,23 @@ data2 = pd.read_csv("datasets/ufc-master.csv", index_col=0)
 # Quem perdeu mais vezes seguidas?
 # Quantos rounds durou a maior luta?
 
-print(data2.keys())
+# print(data2.keys())
+# maior_luta = data2.groupby(["no_of_rounds"]).max()
+
+print(data2.head())
+print(data2.describe())
+
+df = pd.DataFrame(data2.no_of_rounds) # Quantos rounds durou a maior luta?
+print(df.head(1))
+
+df = pd.DataFrame(data2.B_longest_win_streak) # Quem ganhou mais vezes seguidas? (Blue)
+print(df.head(1))
+
+df = pd.DataFrame(data2.R_longest_win_streak) # Quem ganhou mais vezes seguidas? (Red)
+print(df.head(1))
+
+df = pd.DataFrame(data2.B_current_lose_streak) # Quem perdeu mais vezes seguidas? (Blue)
+print(df.head(1))
+
+df = pd.DataFrame(data2.R_current_lose_streak) # Quem perdeu mais vezes seguidas? (Red)
+print(df.head(1))
