@@ -1,4 +1,5 @@
 import pyodbc
+import pandas as pd
 
 server = "fgv-db-server.database.windows.net"
 database = "fgv-db"
@@ -17,10 +18,48 @@ cursor = connection.cursor()
 
 
 #Sample select query
+cursor.execute("SELECT @@version;") 
+row = cursor.fetchone() 
+while row: 
+    print(row[0])
+    row = cursor.fetchone()
 
-
-cursor.execute("elect * from sys.databases") 
+cursor.execute(""" 
+        SELECT name, database_id, create_date  
+        FROM sys.databases ;""") 
 for r in cursor.fetchall():
     print(r)
+
+
+# nomedb = u"fgv-db"
+
+# SELECT = """\
+#             SELECT *  
+#             FROM ? ;"""
+            
+# cursor.execute(SELECT, (nomedb)) 
+        
+# for r in cursor.fetchall():
+#     print(r)
     
-connection.close()
+    
+# UPDATE_SQL3 = """
+#     SELECT * FROM 
+#     WHERE
+#         STATION_ID = ?
+# """
+
+# conn = pyodbc.connect('DRIVER={SQL Server};SERVER=local;DATABASE=DB;UID=me;PWD=pass')
+# cursor = conn.cursor()
+
+# cursor.execute(UPDATE_SQL3 %
+#                            (name,
+#                             title,
+#                             active,
+#                             id
+#                             ))
+
+
+
+    
+# connection.close()
