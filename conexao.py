@@ -1,5 +1,4 @@
 import pyodbc
-import pandas as pd
 
 server = "fgv-db-server.database.windows.net"
 database = "fgv-db"
@@ -10,15 +9,15 @@ initialCatalog = "fgv-db";
 
 class Conexao:
     def __init__(self):
-        self.connection = pyodbc.connect("DRIVER="+driver
+        self.conexao = pyodbc.connect("DRIVER="+driver
                             + ";SERVER="+server
                             + ";Initial Catalog ="+initialCatalog
                             + ";PORT=1433;DATABASE="
                             + database+";UID="+username+";PWD="
                             + password)
         
-    def verificacao_Conexao(self):
-        cursor = self.connection.cursor()
+    def verificacaoConexao(self):
+        cursor = self.conexao.cursor()
         
         
         #Informacoes sobre as tables (db, schema, nome, se é base table ou view)
@@ -56,7 +55,9 @@ class Conexao:
         #Seleciona o primeiro registro de 'ufc_master'
         cursor.execute(""" 
               SELECT TOP(1) * FROM ufc.ufc_master;""") 
-        
+        for r in cursor.fetchall():
+            print(r)
+            
         print("\n\n\n")        
         #Seleciona o primeiro item de 'covid_impact_on_airport_traffic'          
         cursor.execute(""" 
@@ -65,7 +66,7 @@ class Conexao:
               
         for r in cursor.fetchall():
             print(r)
-        self.connection.close()
-
-conexao = Conexao()
-conexao.verificacao_Conexao()
+        
+    def fecharConexao(self):
+        self.conexao.close()
+        
