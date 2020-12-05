@@ -21,17 +21,36 @@ data2 = pd.read_csv("datasets/ufc-master.csv", index_col=0)
 print(data2.head())
 print(data2.describe())
 
-df = pd.DataFrame(data2.no_of_rounds) # Quantos rounds durou a maior luta?
-print(df.head(1))
+df = pd.DataFrame(data2)
+print(df)
 
-df = pd.DataFrame(data2.B_longest_win_streak) # Quem ganhou mais vezes seguidas? (Blue)
-print(df.head(1))
+df = pd.DataFrame(data2.Winner)
+print(df)
 
-df = pd.DataFrame(data2.R_longest_win_streak) # Quem ganhou mais vezes seguidas? (Red)
-print(df.head(1))
+# df = pd.DataFrame(data2.no_of_rounds) # Quantos rounds durou a maior luta?
+# print(df.head(1))
 
-df = pd.DataFrame(data2.B_current_lose_streak) # Quem perdeu mais vezes seguidas? (Blue)
-print(df.head(1))
+# df = pd.DataFrame(data2.B_longest_win_streak) # Quem ganhou mais vezes seguidas? (Blue)
+# print(df.head(1))
 
-df = pd.DataFrame(data2.R_current_lose_streak) # Quem perdeu mais vezes seguidas? (Red)
-print(df.head(1))
+# df = pd.DataFrame(data2.R_longest_win_streak) # Quem ganhou mais vezes seguidas? (Red)
+# print(df.head(1))
+
+# df = pd.DataFrame(data2.B_current_lose_streak) # Quem perdeu mais vezes seguidas? (Blue)
+# print(df.head(1))
+
+# df = pd.DataFrame(data2.R_current_lose_streak) # Quem perdeu mais vezes seguidas? (Red)
+# print(df.head(1))
+#######################################################
+
+##############PLOT VENCEDORES POR GENERO###############
+# print(data2.groupby("weight_class").mean())
+# print(data2.groupby("gender").mean())
+# print(data2.groupby(["weight_class", "gender"]).mean())
+
+# vencedores_por_peso_genero = data2.groupby(["weight_class", "gender"]).mean()
+# print(type(vencedores_por_peso_genero))
+
+# vencedores_por_peso_genero["Winner"].plot.bar()
+# plt.show()
+
