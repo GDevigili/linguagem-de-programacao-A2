@@ -18,5 +18,19 @@ data1 = pd.read_csv("datasets/covid_impact_on_airport_traffic.csv", index_col=0)
 
 print(data1.keys())
 
+print(data1.head())
+print(data1.describe())
 
+df = pd.DataFrame(data1)
+print(df)
 
+##############PLOT COMPARACAO DE VOOS POR AEROPORTO###############
+print(data1.groupby("Date").mean())
+print(data1.groupby("AirportName").mean())
+print(data1.groupby(["Date", "AirportName"]).mean())
+
+viagens_por_aeroporto = data1.groupby(["Date", "AirportName"]).mean()
+print(type(viagens_por_aeroporto))
+
+viagens_por_aeroporto["PercentOfBaseline"].plot.bar()
+plt.show()
