@@ -3,6 +3,9 @@ import numpy as np
 from matplotlib import pyplot as plt
 from sklearn import datasets, linear_model, metrics, model_selection
 import seaborn as sns
+from UFCMaster import UFCMaster
+um = UFCMaster()
+print(um.df.head())
 
 data2 = pd.read_csv("datasets/ufc-master.csv", index_col=0)
 
@@ -84,7 +87,38 @@ rounds_por_peso_genero["no_of_rounds"].plot.bar()
 plt.show()
 
 #######################################################
+print("\n------------------------------------------------\n")
+print("PLOT NUMERO DE VITÓRIAS/DERROTAS POR ROUND (AZUL)")
+print(data2.groupby("B_wins").mean())
+print(data2.groupby("B_losses").mean())
+print(data2.groupby(["B_wins", "B_losses"]).mean())
 
+vitorias_derrotas_B = data2.groupby(["B_wins", "B_losses"]).mean()
+print(type(vitorias_derrotas_B))
+
+vitorias_derrotas_B["B_total_rounds_fought"].plot.bar()
+plt.show()
+
+# agrupamento1 = pd.cut(df["B_wins"], np.arange(0, 100, 5))
+# agrupamento2 = pd.cut(df["B_losses"], np.arange(0, 100, 5))
+# sobreviventes_por_idade = df.groupby(agrupamento1).mean()
+# sobreviventes_por_idade["B_total_rounds_fought"].plot.bar()
+# plt.show()
+
+#######################################################
+print("\n------------------------------------------------\n")
+print("PLOT NUMERO DE VITÓRIAS/DERROTAS POR ROUND (VERMELHO)")
+print(data2.groupby("R_wins").mean())
+print(data2.groupby("R_losses").mean())
+print(data2.groupby(["R_wins", "R_losses"]).mean())
+
+vitorias_derrotas_R = data2.groupby(["R_wins", "R_losses"]).mean()
+print(type(vitorias_derrotas_R))
+
+vitorias_derrotas_R["R_total_rounds_fought"].plot.bar()
+plt.show()
+
+#######################################################
 print("\n------------------------------------------------\n")
 print("PREVISÃO DE ROUNDS")
 df["NUMERO DE ROUNDS"] = data2.no_of_rounds
