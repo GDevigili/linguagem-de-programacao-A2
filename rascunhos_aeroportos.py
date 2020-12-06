@@ -13,26 +13,39 @@ print(data1.describe())
 df = pd.DataFrame(data1)
 print(df)
 
-df = pd.DataFrame(data1.AirportName) # Nome dos aeroportos
-print(df.head())
+print("\n------------------------------------------------\n")
+print("NOME DOS AEROPORTOS")
+df = pd.DataFrame(data1.AirportName) 
+print(df)
 
+print("\n------------------------------------------------\n")
+print("PORCENTAGEM DE BASELINE")
 df = pd.DataFrame(data1.PercentOfBaseline) # Baseline
-print(df.head())
+print(df)
 
-df = pd.DataFrame(data1.Centroid) # Centroide
-print(df.head())
+print("\n------------------------------------------------\n")
+print("CENTROIDE")
+print(data1[u'Centroid'].value_counts())
+# df = pd.DataFrame(data1.Centroid) # Centroide
+# print(df)
 
-df = pd.DataFrame(data1.Geography) # Geografia
-print(df.head())
+print("\n------------------------------------------------\n")
+print("GEOGRAFIA")
+print(data1[u'Geography'].value_counts())
+# df = pd.DataFrame(data1.Geography) # Geografia
+# print(df)
 
-df = pd.DataFrame(data1.City) # Cidade
-print(df.head())
+print("\n------------------------------------------------\n")
+print("CIDADES")
+print(data1[u'City'].value_counts())
 
-df = pd.DataFrame(data1.State) # Estado
-print(df.head())
+print("\n------------------------------------------------\n")
+print("ESTADOS")
+print(data1[u'State'].value_counts())
 
-df = pd.DataFrame(data1.Country) # Pais
-print(df.head())
+print("\n------------------------------------------------\n")
+print("PAÍSES")
+print(data1[u'Country'].value_counts())
 
 #######################################################
 

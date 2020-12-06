@@ -51,8 +51,8 @@ print(data2[u'country'].value_counts())
 
 
 #######################################################
-
-##############PLOT NUMERO DE ROUNDS POR PESO/GENERO###############
+print("\n------------------------------------------------\n")
+print("PLOT NUMERO DE ROUNDS POR PESO/GENERO")
 print(data2.groupby("weight_class").mean())
 print(data2.groupby("gender").mean())
 print(data2.groupby(["weight_class", "gender"]).mean())
@@ -65,6 +65,8 @@ plt.show()
 
 #######################################################
 
+print("\n------------------------------------------------\n")
+print("PREVISÃO DE ROUNDS")
 df["NUMERO DE ROUNDS"] = data2.no_of_rounds
 print(df.head(3))
 
