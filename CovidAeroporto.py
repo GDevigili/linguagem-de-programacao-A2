@@ -42,7 +42,7 @@ class CovidAeroporto():
     
     # # Em que cidades dos EUA o número de voos aumentou?
     def aumentoVoosPorCidade(self):
-        pass
+        aux_df = self.df[["City", "Date"]]
     
     # # Em que cidades dos EUA o número de voos diminuiu?
     def reducaoVoosPorCidade(self):
@@ -50,32 +50,24 @@ class CovidAeroporto():
     
     # # Qual dia teve o maior número de voos internacionalmente?
     def maiorNumeroVoos(self):
-        aux_df = self.df["City"].value_counts()
-        return pd.DataFrame(aux_df.sort_values(ascending=False))
-    
-    # # Qual dia teve o menor número de voos internacionalmente?
-    def menorNumeroVoos(self):
-        aux_df = self.df["City"].value_counts()
-        return pd.DataFrame(aux_df.sort_values(ascending=True))
-    
-    # # Comparando o dia com mais voos com o mesmo dia da semana no período de baseline, o número de voos aumentou ou abaixou?
-    def diaComMaisVoos(self):
         aux_df = pd.DataFrame(self.df["Date"].value_counts())
         aux_df.columns = ["QtdVoos"]
         aux_df["Weekday"] = [date.weekday() for date in aux_df.index.values]
-        return aux_df.sort_values(by = aux_df[["QtdVoos", "Weekday"]], ascending = False)
+        return aux_df.sort_values(by = aux_df["QtdVoos"], ascending = False)
     
-    # # Comparando o dia com menos voos com o mesmo dia da semana no período de baseline, o número de voos aumentou ou abaixou?
-    def diaComMenosVoos(self):
+    # # Qual dia teve o menor número de voos internacionalmente?
+    def menorNumeroVoos(self):
         aux_df = pd.DataFrame(self.df["Date"].value_counts())
         aux_df.columns = ["QtdVoos"]
         aux_df["Weekday"] = [date.weekday() for date in aux_df.index.values]
         return aux_df.sort_values(by = aux_df["QtdVoos"], ascending = True)
     
-    # # Qual estado americano tem o maior centroide de aeroportos?
-    def centroidePorEstado(self):
-        aux_df = self
-
+    # # Comparando o dia com mais voos com o mesmo dia da semana no período de baseline, o número de voos aumentou ou abaixou?
+    # # Comparando o dia com menos voos com o mesmo dia da semana no período de baseline, o número de voos aumentou ou abaixou?
+    def baselinePorDia(self):
+        return pd.DataFrame(self.df[["Date", "PercentOfBaseline"]].groupby("Date").mean())
+    
+    
 ca = CovidAeroporto()
 # -----------Usei para testar manualmente os resultados
 print(ca.diaComMaisVoos())
