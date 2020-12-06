@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 from sklearn import datasets, linear_model, metrics, model_selection
+import seaborn as sns
 
 data2 = pd.read_csv("datasets/ufc-master.csv", index_col=0)
 
@@ -13,23 +14,40 @@ print(data2.describe())
 df = pd.DataFrame(data2)
 print(df)
 
-df = pd.DataFrame(data2.Winner)
+print("\n------------------------------------------------\n")
+print("LADO VENCEDOR")
+#df = pd.DataFrame(data2.Winner) # Quantos rounds durou a maior luta?
+print(data2[u'Winner'].value_counts())
+
+
+print("\n------------------------------------------------\n")
+print("NÚMERO DE ROUNDS POR PARTIDA")
+#df = pd.DataFrame(data2.no_of_rounds) # Quantos rounds durou a maior luta?
+print(data2[u'no_of_rounds'].value_counts())
+
+print("\n------------------------------------------------\n")
+print("MAIOR SÉRIE DE VITÓRIAS DO LADO AZUL")
+df = pd.DataFrame(data2.B_longest_win_streak) 
 print(df)
 
-df = pd.DataFrame(data2.no_of_rounds) # Quantos rounds durou a maior luta?
-print(df.head())
+print("\n------------------------------------------------\n")
+print("MAIOR SÉRIE DE VITÓRIAS DO LADO VERMELHO")
+df = pd.DataFrame(data2.R_longest_win_streak) 
+print(df)
 
-df = pd.DataFrame(data2.B_longest_win_streak) # Quem ganhou mais vezes seguidas? (Blue)
-print(df.head())
+print("\n------------------------------------------------\n")
+print("SÉRIE DE DERROTAS ATUAL DO LADO AZUL")
+df = pd.DataFrame(data2.B_current_lose_streak) 
+print(df)
 
-df = pd.DataFrame(data2.R_longest_win_streak) # Quem ganhou mais vezes seguidas? (Red)
-print(df.head())
+print("\n------------------------------------------------\n")
+print("SÉRIE DE DERROTAS ATUAL DO LADO VERMELHO")
+df = pd.DataFrame(data2.R_current_lose_streak) 
+print(df)
 
-df = pd.DataFrame(data2.B_current_lose_streak) # Quem perdeu mais vezes seguidas? (Blue)
-print(df.head())
-
-df = pd.DataFrame(data2.R_current_lose_streak) # Quem perdeu mais vezes seguidas? (Red)
-print(df.head())
+print("\n------------------------------------------------\n")
+print("PAÍSES")
+print(data2[u'country'].value_counts())
 
 
 #######################################################
