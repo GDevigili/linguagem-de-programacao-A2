@@ -1,5 +1,6 @@
 import Conexao as con
 import pandas as pd
+from datetime import datetime
 
 """
 
@@ -59,18 +60,25 @@ class CovidAeroporto():
     
     # # Comparando o dia com mais voos com o mesmo dia da semana no período de baseline, o número de voos aumentou ou abaixou?
     def diaComMaisVoos(self):
-        aux_df = self.df
-        aux_df["Weekday"] = [date.weekday() for date in self.df["Date"]]
-        grouped = aux_df[["Date", "Weekday"]].groupby(aux_df["Date"]).count()
-        return grouped
+        # aux_df = pd.DataFrame(self.df.groupby("Date").to_frame('QtdVoos').reset_index())
+        # aux_series["Weekday"] = [date.weekday() for date in self.df["Date"]]
+        # aux_df = self.df.count("Date").reset_index(name = 'QtdVoos')
+
+        aux_df = pd.DataFrame(self.df["Date"].value_counts())
+        aux_df.columns = ["QtdVoos"]
+        aux_df["Weekday"] = [date.weekday() for date in aux_df.index.values]
+        return aux_df.sort_values(by = aux_df[["QtdVoos", "Weekday"]], ascending = False)
     
     # # Comparando o dia com menos voos com o mesmo dia da semana no período de baseline, o número de voos aumentou ou abaixou?
     def diaComMenosVoos(self):
-        pass
+        aux_df = pd.DataFrame(self.df["Date"].value_counts())
+        aux_df.columns = ["QtdVoos"]
+        aux_df["Weekday"] = [date.weekday() for date in aux_df.index.values]
+        return aux_df.sort_values(by = aux_df["QtdVoos"], ascending = True)
     
     # # Qual estado americano tem o maior centroide de aeroportos?
     def centroidePorEstado(self):
-        pass
+        aux_df = self
 
 ca = CovidAeroporto()
 # -----------Usei para testar manualmente os resultados
