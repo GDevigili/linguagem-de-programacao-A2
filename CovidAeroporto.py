@@ -1,7 +1,31 @@
 import Conexao as con
 import pandas as pd
 
-#FAZER CLASSE AQUI
+"""
+
+INFO DO DATAFRAME, PODE APAGAR DEPOIS
+
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 5936 entries, 0 to 5935
+Data columns (total 11 columns):
+ #   Column             Non-Null Count  Dtype  
+---  ------             --------------  -----  
+ 0   AggregationMethod  5936 non-null   object 
+ 1   Date               5936 non-null   object 
+ 2   Version            5936 non-null   float64
+ 3   AirportName        5936 non-null   object 
+ 4   PercentOfBaseline  5936 non-null   int64  
+ 5   Centroid           5936 non-null   object 
+ 6   City               5936 non-null   object 
+ 7   State              5936 non-null   object 
+ 8   ISO_3166_2         5936 non-null   object 
+ 9   Country            5936 non-null   object 
+ 10  Geography          5936 non-null   object 
+dtypes: float64(1), int64(1), object(9)
+memory usage: 510.2+ KB
+"""
+
 
 class CovidAeroporto():
     # Cada função é referente à uma pergunta
@@ -35,7 +59,10 @@ class CovidAeroporto():
     
     # # Comparando o dia com mais voos com o mesmo dia da semana no período de baseline, o número de voos aumentou ou abaixou?
     def diaComMaisVoos(self):
-        pass
+        aux_df = self.df
+        aux_df["Weekday"] = [date.weekday() for date in self.df["Date"]]
+        grouped = aux_df[["Date", "Weekday"]].groupby(aux_df["Date"]).count()
+        return grouped
     
     # # Comparando o dia com menos voos com o mesmo dia da semana no período de baseline, o número de voos aumentou ou abaixou?
     def diaComMenosVoos(self):
@@ -46,7 +73,16 @@ class CovidAeroporto():
         pass
 
 ca = CovidAeroporto()
-print(ca.aumentoVoosPorCidade().head())
+# -----------Usei para testar manualmente os resultados
+print(ca.diaComMaisVoos())
+# print(ca.menorNumeroVoos())
+
+
+# aux_df = self.df["City"].value_counts()
+# return pd.DataFrame(aux_df.sort_values(ascending=False))
+
+
+# -----------Já tava aqui antes
 
 # print(data1.keys())
 
