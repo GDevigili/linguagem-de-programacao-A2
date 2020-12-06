@@ -60,10 +60,6 @@ class CovidAeroporto():
     
     # # Comparando o dia com mais voos com o mesmo dia da semana no período de baseline, o número de voos aumentou ou abaixou?
     def diaComMaisVoos(self):
-        # aux_df = pd.DataFrame(self.df.groupby("Date").to_frame('QtdVoos').reset_index())
-        # aux_series["Weekday"] = [date.weekday() for date in self.df["Date"]]
-        # aux_df = self.df.count("Date").reset_index(name = 'QtdVoos')
-
         aux_df = pd.DataFrame(self.df["Date"].value_counts())
         aux_df.columns = ["QtdVoos"]
         aux_df["Weekday"] = [date.weekday() for date in aux_df.index.values]
