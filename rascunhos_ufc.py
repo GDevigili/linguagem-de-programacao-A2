@@ -36,6 +36,16 @@ df = pd.DataFrame(data2.R_longest_win_streak)
 print(df)
 
 print("\n------------------------------------------------\n")
+print("SÉRIE DE VITÓRIAS ATUAL DO LADO AZUL")
+df = pd.DataFrame(data2.B_current_win_streak) 
+print(df)
+
+print("\n------------------------------------------------\n")
+print("SÉRIE DE VITÓRIAS ATUAL DO LADO VERMELHO")
+df = pd.DataFrame(data2.R_current_win_streak) 
+print(df)
+
+print("\n------------------------------------------------\n")
 print("SÉRIE DE DERROTAS ATUAL DO LADO AZUL")
 df = pd.DataFrame(data2.B_current_lose_streak) 
 print(df)
@@ -49,7 +59,17 @@ print("\n------------------------------------------------\n")
 print("PAÍSES")
 print(data2[u'country'].value_counts())
 
+print("\n------------------------------------------------\n")
+print("TOTAL DE ROUNDS LUTADOS PELO LADO AZUL")
+# print(data2[u'B_total_rounds_fought'].value_counts())
+df = pd.DataFrame(data2.B_total_rounds_fought) 
+print(df)
 
+print("\n------------------------------------------------\n")
+print("TOTAL DE ROUNDS LUTADOS PELO LADO VERMELHO")
+#print(data2[u'R_total_rounds_fought'].value_counts())
+df = pd.DataFrame(data2.R_total_rounds_fought) 
+print(df)
 #######################################################
 print("\n------------------------------------------------\n")
 print("PLOT NUMERO DE ROUNDS POR PESO/GENERO")
@@ -68,7 +88,7 @@ plt.show()
 print("\n------------------------------------------------\n")
 print("PREVISÃO DE ROUNDS")
 df["NUMERO DE ROUNDS"] = data2.no_of_rounds
-print(df.head(3))
+print(df)
 
 print(df.describe())
 
@@ -77,7 +97,7 @@ dependente = df["NUMERO DE ROUNDS"]
 
 #Dividir o conjunto de dados entre treino e teste
 
-X_treino, X_teste, Y_treino, Y_teste = model_selection.train_test_split(independentes, dependente, test_size = 0.4, random_state = 1)
+X_treino, X_teste, Y_treino, Y_teste = model_selection.train_test_split(independentes, dependente, test_size = 0.1, random_state = 1)
 print(X_treino.shape)
 print(X_teste.shape)
 print(Y_treino.shape)
