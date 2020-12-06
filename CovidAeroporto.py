@@ -36,7 +36,7 @@ class CovidAeroporto():
         self.df = self.conexao.getCovidImpactDataFrame()
         self.conexao.fecharConexao()    
         
-    def voosPorBaseline(self):
+    def baselinesPorPais(self):
         return pd.DataFrame(self.df[["Country", "PercentOfBaseline"]].groupby("Country").mean())
     
     # # Em que cidades dos EUA o número de voos aumentou?  
