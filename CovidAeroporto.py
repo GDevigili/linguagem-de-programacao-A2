@@ -63,16 +63,6 @@ class CovidAeroporto():
     def baselinePorDia(self):
         return pd.DataFrame(self.df[["Date", "PercentOfBaseline"]].groupby("Date").mean())
     
-    
-ca = CovidAeroporto()
-# -----------Usei para testar manualmente os resultados
-print(ca.diaComMaisVoos())
-# print(ca.menorNumeroVoos())
-
-
-# aux_df = self.df["City"].value_counts()
-# return pd.DataFrame(aux_df.sort_values(ascending=False))
-
 
 # -----------Já tava aqui antes
 
