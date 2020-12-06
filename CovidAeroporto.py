@@ -1,4 +1,5 @@
 import Conexao as con
+import pandas as pd
 
 #FAZER CLASSE AQUI
 
@@ -24,11 +25,13 @@ class CovidAeroporto():
     
     # # Qual dia teve o maior número de voos internacionalmente?
     def maiorNumeroVoos(self):
-        pass
+        aux_df = self.df["City"].value_counts()
+        return pd.DataFrame(aux_df.sort_values(ascending=False))
     
     # # Qual dia teve o menor número de voos internacionalmente?
     def menorNumeroVoos(self):
-        pass
+        aux_df = self.df["City"].value_counts()
+        return pd.DataFrame(aux_df.sort_values(ascending=True))
     
     # # Comparando o dia com mais voos com o mesmo dia da semana no período de baseline, o número de voos aumentou ou abaixou?
     def diaComMaisVoos(self):
@@ -41,7 +44,9 @@ class CovidAeroporto():
     # # Qual estado americano tem o maior centroide de aeroportos?
     def centroidePorEstado(self):
         pass
-    
+
+ca = CovidAeroporto()
+print(ca.aumentoVoosPorCidade().head())
 
 # print(data1.keys())
 
