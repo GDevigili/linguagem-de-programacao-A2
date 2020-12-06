@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 from sklearn import datasets, linear_model, metrics, model_selection
+import seaborn as sns
 
 data2 = pd.read_csv("datasets/ufc-master.csv", index_col=0)
 
@@ -13,28 +14,65 @@ print(data2.describe())
 df = pd.DataFrame(data2)
 print(df)
 
-df = pd.DataFrame(data2.Winner)
+print("\n------------------------------------------------\n")
+print("LADO VENCEDOR")
+#df = pd.DataFrame(data2.Winner) # Quantos rounds durou a maior luta?
+print(data2[u'Winner'].value_counts())
+
+
+print("\n------------------------------------------------\n")
+print("NÚMERO DE ROUNDS POR PARTIDA")
+#df = pd.DataFrame(data2.no_of_rounds) # Quantos rounds durou a maior luta?
+print(data2[u'no_of_rounds'].value_counts())
+
+print("\n------------------------------------------------\n")
+print("MAIOR SÉRIE DE VITÓRIAS DO LADO AZUL")
+df = pd.DataFrame(data2.B_longest_win_streak) 
 print(df)
 
-df = pd.DataFrame(data2.no_of_rounds) # Quantos rounds durou a maior luta?
-print(df.head())
+print("\n------------------------------------------------\n")
+print("MAIOR SÉRIE DE VITÓRIAS DO LADO VERMELHO")
+df = pd.DataFrame(data2.R_longest_win_streak) 
+print(df)
 
-df = pd.DataFrame(data2.B_longest_win_streak) # Quem ganhou mais vezes seguidas? (Blue)
-print(df.head())
+print("\n------------------------------------------------\n")
+print("SÉRIE DE VITÓRIAS ATUAL DO LADO AZUL")
+df = pd.DataFrame(data2.B_current_win_streak) 
+print(df)
 
-df = pd.DataFrame(data2.R_longest_win_streak) # Quem ganhou mais vezes seguidas? (Red)
-print(df.head())
+print("\n------------------------------------------------\n")
+print("SÉRIE DE VITÓRIAS ATUAL DO LADO VERMELHO")
+df = pd.DataFrame(data2.R_current_win_streak) 
+print(df)
 
-df = pd.DataFrame(data2.B_current_lose_streak) # Quem perdeu mais vezes seguidas? (Blue)
-print(df.head())
+print("\n------------------------------------------------\n")
+print("SÉRIE DE DERROTAS ATUAL DO LADO AZUL")
+df = pd.DataFrame(data2.B_current_lose_streak) 
+print(df)
 
-df = pd.DataFrame(data2.R_current_lose_streak) # Quem perdeu mais vezes seguidas? (Red)
-print(df.head())
+print("\n------------------------------------------------\n")
+print("SÉRIE DE DERROTAS ATUAL DO LADO VERMELHO")
+df = pd.DataFrame(data2.R_current_lose_streak) 
+print(df)
 
+print("\n------------------------------------------------\n")
+print("PAÍSES")
+print(data2[u'country'].value_counts())
 
+print("\n------------------------------------------------\n")
+print("TOTAL DE ROUNDS LUTADOS PELO LADO AZUL")
+# print(data2[u'B_total_rounds_fought'].value_counts())
+df = pd.DataFrame(data2.B_total_rounds_fought) 
+print(df)
+
+print("\n------------------------------------------------\n")
+print("TOTAL DE ROUNDS LUTADOS PELO LADO VERMELHO")
+#print(data2[u'R_total_rounds_fought'].value_counts())
+df = pd.DataFrame(data2.R_total_rounds_fought) 
+print(df)
 #######################################################
-
-##############PLOT NUMERO DE ROUNDS POR PESO/GENERO###############
+print("\n------------------------------------------------\n")
+print("PLOT NUMERO DE ROUNDS POR PESO/GENERO")
 print(data2.groupby("weight_class").mean())
 print(data2.groupby("gender").mean())
 print(data2.groupby(["weight_class", "gender"]).mean())
@@ -47,8 +85,10 @@ plt.show()
 
 #######################################################
 
+print("\n------------------------------------------------\n")
+print("PREVISÃO DE ROUNDS")
 df["NUMERO DE ROUNDS"] = data2.no_of_rounds
-print(df.head(3))
+print(df)
 
 print(df.describe())
 
@@ -57,7 +97,7 @@ dependente = df["NUMERO DE ROUNDS"]
 
 #Dividir o conjunto de dados entre treino e teste
 
-X_treino, X_teste, Y_treino, Y_teste = model_selection.train_test_split(independentes, dependente, test_size = 0.4, random_state = 1)
+X_treino, X_teste, Y_treino, Y_teste = model_selection.train_test_split(independentes, dependente, test_size = 0.1, random_state = 1)
 print(X_treino.shape)
 print(X_teste.shape)
 print(Y_treino.shape)
