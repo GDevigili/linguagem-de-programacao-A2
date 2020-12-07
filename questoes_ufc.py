@@ -1,28 +1,21 @@
 from UFCMaster import UFCMaster
-um = UFCMaster()
+
 
 #####################QUESTÕES UFC#####################
-
-# Qual lado ganhou mais?
 Player = UFCMaster()
+# Qual lado ganhou mais?
 print(Player.vitoriasPorLado())
 # Quem ganhou mais lutas?
-Player = UFCMaster()
 print(Player.vitoriasPorLutador())
 # Quantas partidas duraram menos?
-Player = UFCMaster()
 print(Player.menorLuta())
 # Qual peso que tem mais integrantes?
-Player = UFCMaster()
 print(Player.contagemCategoria())
 # Quem ganhou mais vezes seguidas?
-Player = UFCMaster()
 print(Player.vitoriasSeguidas())
 # Quem perdeu mais vezes seguidas?
-Player = UFCMaster()
 print(Player.derrotasSeguidas())
 # Quantos rounds durou a maior luta?
-Player = UFCMaster()
 print(Player.maiorLuta())
 # Qual o máximo de ataques significativos dados pelo lado azul por minuto? (B_avg_SIG_STR_landed)
 
