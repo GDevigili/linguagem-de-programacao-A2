@@ -146,3 +146,20 @@ class UFCMaster:
         """
         minimo = min(self.df["no_of_rounds"])
         return len(self.df[self.df["no_of_rounds"] == minimo])
+
+    def ataquesSignificativos(self):
+        # vermelhos = self.df[self.df["R_avg_SIG_STR_landed"] == "Red"]["R_avg_SIG_STR_landed"]
+        # azuis = self.df[self.df["B_avg_SIG_STR_landed"] == "Blue"]["B_avg_SIG_STR_landed"]
+        
+        # #maximoAtaquesSignificativosB = max(self.df["B_avg_SIG_STR_landed"])
+        # #maximoAtaquesSignificativosR = max(self.df["R_avg_SIG_STR_landed"])
+       
+        # aux_df = pd.DataFrame(self.df[azuis, vermelhos].value_counts())
+        # return aux_df
+        
+     def idades(self):
+         idadeAzul =  max(self.df["B_age"])
+         idadeVermelha = max(self.df["R_age"])
+         if idadeAzul > idadeVermelha:
+            return (f"A idade é: {idadeAzul} (Lado azul)")
+         else: return (f"A idade é: {idadeVermelha} (Lado vermelho)")

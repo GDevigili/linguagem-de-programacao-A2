@@ -17,14 +17,16 @@ print(Player.vitoriasSeguidas())
 print(Player.derrotasSeguidas())
 # Quantos rounds durou a maior luta?
 print(Player.maiorLuta())
-# Qual o máximo de ataques significativos dados pelo lado azul por minuto? (B_avg_SIG_STR_landed)
-
+# Quantas lutas tiveram um número mínimo de rounds?
+print(Player.menorLuta())
+# Qual o máximo de ataques significativos dados por minuto? 
+print(Player.ataquesSignificativos())
 # Quantas derrubadas o lado azul fez a cada 15 minutos? (B_avg_TD_landed)
 
 # Quantas vitórias por decisão unânime o lado azul teve? (B_win_by_Decision_Unanimous)
 
-# Quantos anos tem o lutador mais velho? (R_age)
-
+# Quantos anos tem o lutador mais velho? 
+print(Player.idades())
 # Quantas lutas aconteceram em uma arena vazia? (empty_arena)
 
 # Quantas vitórias o lado vermelho teve a mais que o azul?
