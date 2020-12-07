@@ -170,3 +170,6 @@ class UFCMaster:
         enchimento = max(self.df["empty_arena"])
         return len(self.df[self.df["empty_arena"] == enchimento])
     
+    def Decisao(self):
+        pass
+    

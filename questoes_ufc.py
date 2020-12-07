@@ -7,8 +7,6 @@ Player = UFCMaster()
 print(Player.vitoriasPorLado())
 # Quem ganhou mais lutas?
 print(Player.vitoriasPorLutador())
-# Quantas partidas duraram menos?
-print(Player.menorLuta())
 # Qual peso que tem mais integrantes?
 print(Player.contagemCategoria())
 # Quem ganhou mais vezes seguidas?
