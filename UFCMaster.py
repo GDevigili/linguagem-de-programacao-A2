@@ -7,13 +7,28 @@ class UFCMaster:
     """Constroi um método para responder cada pergunta feita."""
     
     def __init__(self):
-        """Inicia a conexao com o banco de dados, importa os dados e encerra a conexao."""
+        """
+        Inicia a conexao com o banco de dados, importa os dados e encerra a conexao.
+
+        Returns
+        -------
+        None.
+
+        """
         self.conexao = con.Conexao()
         self.df = self.conexao.getUfcDataFrame()
         self.conexao.fecharConexao()    
     
     def vitoriasPorLado(self):
-        """Responde a pergunta 'Qual lado ganhou mais?'"""
+        """
+        Responde a pergunta 'Qual lado ganhou mais?'.
+
+        Returns
+        -------
+        str
+            Nome do lado com mais vitórias.
+
+        """
         vitoriasAzul = self.df[self.df["Winner"] == "Blue"]["Winner"].value_counts().head(1)[0]
         vitoriasVermelhas = self.df[self.df["Winner"] == "Red"]["Winner"].value_counts().head(1)[0]
         
@@ -25,7 +40,15 @@ class UFCMaster:
             return "Empate"
         
     def vitoriasPorLutador(self):
-        """Responde a pergunta 'Quem ganhou mais lutas?'"""
+        """
+        Responde a pergunta 'Quem ganhou mais lutas?'.
+
+        Returns
+        -------
+        str
+            Nome do lutador com mais vitórias.
+
+        """
         vermelhos = self.df[self.df["Winner"] == "Red"]["R_fighter"]
         
         azuis = self.df[self.df["Winner"] == "Blue"]["B_fighter"]
@@ -34,7 +57,15 @@ class UFCMaster:
         return winners.value_counts()[:1].index.tolist()[0]
      
     def contagemCategoria(self):
-        """Responde a pergunta 'Qual peso que tem mais integrantes?'"""
+        """
+        Responde a pergunta 'Qual peso que tem mais integrantes?'.
+
+        Returns
+        -------
+        categoria : str
+            Categoria de peso com mais integrantes.
+
+        """
         
         grouped = self.df[['weight_class']].groupby(self.df['weight_class'])
         contGrupos = grouped.count()
@@ -44,7 +75,15 @@ class UFCMaster:
         return categoria
         
     def vitoriasSeguidas(self):
-        """Responde a pergunta 'Quem ganhou mais vezes seguidas?'"""
+        """
+        Responde a pergunta 'Quem ganhou mais vezes seguidas?'.
+
+        Returns
+        -------
+        str
+            Nome do lutador com mais vitórias seguidas.
+
+        """
         maximoVitoriasSeguidasB = max(self.df["B_longest_win_streak"])
         maximoVitoriasSeguidasR = max(self.df["R_longest_win_streak"])
         
@@ -60,7 +99,15 @@ class UFCMaster:
             return losers.value_counts()[:1].index.tolist()[0]
     
     def derrotasSeguidas(self):
-        """Responde a pergunta 'Quem perdeu mais vezes seguidas?'"""
+        """
+        Responde a pergunta 'Quem perdeu mais vezes seguidas?'.
+
+        Returns
+        -------
+        str
+            Nome do lutador com mais derrotas seguidas.
+
+        """
         maximoDerrotasSeguidasB = max(self.df["B_current_lose_streak"])
         maximoDerrotasSeguidasR = max(self.df["R_current_lose_streak"])
         
@@ -76,11 +123,26 @@ class UFCMaster:
             return losers.value_counts()[:1].index.tolist()[0]
         
     def maiorLuta(self):
-        """Responde a pergunta 'Quantos rounds durou a maior luta?'"""
+        """
+        Responde a pergunta 'Quantos rounds durou a maior luta?'.
+
+        Returns
+        -------
+        int
+            Quantidade de rounds da luta mais longa.
+
+        """
         return max(self.df["no_of_rounds"])
         
     def menorLuta(self):
-        """Responde a pergunta 'Quais partidas duraram menos?'"""
+        """
+        Responde a pergunta 'Quantas partida duraram menos rounds?'.
+
+        Returns
+        -------
+        int
+            Numero de partidas mais curtas.
+
+        """
         minimo = min(self.df["no_of_rounds"])
         return len(self.df[self.df["no_of_rounds"] == minimo])
-    
