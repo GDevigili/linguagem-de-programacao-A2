@@ -1,8 +1,8 @@
 from UFCMaster import UFCMaster
 
-
 #####################QUESTÕES UFC#####################
 Player = UFCMaster()
+
 # Qual lado ganhou mais?
 print(Player.vitoriasPorLado())
 # Quem ganhou mais lutas?

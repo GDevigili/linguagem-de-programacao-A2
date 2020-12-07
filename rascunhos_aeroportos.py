@@ -26,6 +26,8 @@ print("\n------------------------------------------------\n")
 print("PORCENTAGEM DE BASELINE")
 df = pd.DataFrame(data1.PercentOfBaseline) # Baseline
 print(df)
+print("Valor médio:")
+print(data1[u'PercentOfBaseline'].mean())
 
 print("\n------------------------------------------------\n")
 print("CENTROIDE")

@@ -33,6 +33,7 @@ class CovidAeroporto():
     def baselinePorDia(self):
         return pd.DataFrame(self.df[["Date", "PercentOfBaseline"]].groupby("Date").mean())
     
+
 ca = CovidAeroporto()
 print(ca.baselinePorCidade())
 print("---------------------------------")
