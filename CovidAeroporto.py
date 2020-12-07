@@ -1,6 +1,6 @@
 import Conexao as con
 import pandas as pd
-from datetime import datetime
+# from datetime import datetime
 
 class CovidAeroporto():
     # Cada função é referente à uma pergunta
@@ -33,15 +33,6 @@ class CovidAeroporto():
     def baselinePorDia(self):
         return pd.DataFrame(self.df[["Date", "PercentOfBaseline"]].groupby("Date").mean())
     
-
-ca = CovidAeroporto()
-print(ca.baselinePorCidade())
-print("---------------------------------")
-print(ca.baselinesPorPais())
-print("---------------------------------")
-print(ca.numeroVoosPorDia())
-print("---------------------------------")
-print(ca.baselinePorDia())
     
 # -----------Já tava aqui antes
 
