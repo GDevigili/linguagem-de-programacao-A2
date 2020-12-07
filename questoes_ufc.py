@@ -35,6 +35,6 @@ print(Player.maiorLuta())
 # Quantas lutas aconteceram em uma arena vazia? (empty_arena)
 
 # Quantas vitórias o lado vermelho teve a mais que o azul?
-# vitoriasAzul = self.df[self.df["Winner"] == "Blue"]["Winner"].value_counts().head(1)[0]
-# vitoriasVermelhas = self.df[self.df["Winner"] == "Red"]["Winner"].value_counts().head(1)[0]
-# print(vitoriasVermelhas - vitoriasAzul)
+vitoriasAzul = Player.df[Player.df["Winner"] == "Blue"]["Winner"].value_counts().head(1)[0]
+vitoriasVermelhas = Player.df[Player.df["Winner"] == "Red"]["Winner"].value_counts().head(1)[0]
+print(vitoriasVermelhas - vitoriasAzul)
