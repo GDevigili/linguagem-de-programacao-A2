@@ -121,9 +121,4 @@ class Conexao:
 
         """
         self.conexao.close()
-
-c = Conexao()
-c.verificacaoConexao()
-c.getUfcDataFrame()
-c.getCovidImpactDataFrame()
-c.fecharConexao()
+        
