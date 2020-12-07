@@ -17,30 +17,21 @@ class UFCMaster:
         vitoriasVermelhas = self.df[self.df["Winner"] == "Red"]["Winner"].value_counts().head(1)[0]
         
         if vitoriasVermelhas > vitoriasAzul:
-            print("Lado vermelho ganhou mais, com um total de",vitoriasVermelhas," vitorias\n")
             return "Vermelho"
         elif vitoriasAzul > vitoriasVermelhas:
-            print("Lado azul ganhou mais, com um total de",vitoriasAzul," vitorias\n")
             return "Azul"
         else:
-            print("Empate no numero de vitorias: quantidade de vitorias de cada lado:",vitoriasAzul)
             return "Empate"
         
     # Quem ganhou mais lutas?
     def vitoriasPorLutador(self):
-        vermelhos = self.df[self.df["Winner"] == "Red"]["R_fighter"]#.groupby(self.df['R_fighter']).count()
+        vermelhos = self.df[self.df["Winner"] == "Red"]["R_fighter"]
         
-        azuis = self.df[self.df["Winner"] == "Blue"]["B_fighter"]#.groupby(self.df['B_fighter']).count()
-        #a = reds["R_fighter"].groupby(self.df['R_fighter']).count()
-        #print(vermelhos)
-        #print(azuis)
+        azuis = self.df[self.df["Winner"] == "Blue"]["B_fighter"]
+        winners = pd.concat([azuis,vermelhos], ignore_index=True)
         
-        result = pd.concat([azuis,vermelhos], ignore_index=True)
-        
-        #self.df.pivot_table(index=['Values'], aggfunc='size')
-        print(result)                      
-                                     
-        
+        return winners.value_counts()[:1].index.tolist()[0]
+     
     # Qual peso que tem mais integrantes?
     def contagemCategoria(self):
         
@@ -53,24 +44,43 @@ class UFCMaster:
         
     # Quem ganhou mais vezes seguidas?
     def vitoriasSeguidas(self):
-        pass    
+        maximoVitoriasSeguidasB = max(self.df["B_longest_win_streak"])
+        maximoVitoriasSeguidasR = max(self.df["R_longest_win_streak"])
+        
+        
+        if(maximoVitoriasSeguidasB > maximoVitoriasSeguidasR):
+            return self.df[self.df["B_longest_win_streak"] == maximoVitoriasSeguidasB]["B_fighter"].values
+        elif (maximoVitoriasSeguidasR > maximoVitoriasSeguidasB):
+            return self.df[self.df["R_longest_win_streak"] == maximoVitoriasSeguidasR]["R_fighter"].values
+        else:
+            r = self.df[self.df["R_longest_win_streak"] == maximoVitoriasSeguidasR]["R_fighter"].values
+            b = self.df[self.df["B_longest_win_streak"] == maximoVitoriasSeguidasR]["B_fighter"].values
+            losers = pd.concat([r,b], ignore_index=True)
+            return losers.value_counts()[:1].index.tolist()[0]
     
     # Quem perdeu mais vezes seguidas?
     def derrotasSeguidas(self):
-        pass
+        maximoDerrotasSeguidasB = max(self.df["B_current_lose_streak"])
+        maximoDerrotasSeguidasR = max(self.df["R_current_lose_streak"])
+        
+        
+        if(maximoDerrotasSeguidasB > maximoDerrotasSeguidasR):
+            return self.df[self.df["B_current_lose_streak"] == maximoDerrotasSeguidasB]["B_fighter"].values
+        elif (maximoDerrotasSeguidasR > maximoDerrotasSeguidasB):
+            return self.df[self.df["R_current_lose_streak"] == maximoDerrotasSeguidasR]["R_fighter"].values
+        else:
+            r = self.df[self.df["R_current_lose_streak"] == maximoDerrotasSeguidasR]["R_fighter"].values
+            b = self.df[self.df["B_current_lose_streak"] == maximoDerrotasSeguidasB]["B_fighter"].values
+            losers = pd.concat([r,b], ignore_index=True)
+            return losers.value_counts()[:1].index.tolist()[0]
         
     # Quantos rounds durou a maior luta?    
-    def maiorLuta():
-        pass
+    def maiorLuta(self):
+        return max(self.df["no_of_rounds"])
+        
     
     # Quais partidas duraram menos?
-    def menorLuta():
-        pass
-        
-    def ordenar(self):
-        pass #
+    def menorLuta(self):
+        minimo = min(self.df["no_of_rounds"])
+        return len(self.df[self.df["no_of_rounds"] == minimo])
     
-u = UFCMaster()
-#u.contagemCategoria()
-u.vitoriasPorLutador()
-#print(u.contagemCategoria())
