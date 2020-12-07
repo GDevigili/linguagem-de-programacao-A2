@@ -26,6 +26,7 @@ print(Player.ataquesSignificativos())
 # Quantas vitórias por decisão unânime o lado azul teve? (B_win_by_Decision_Unanimous)
 
 # Quantos anos tem o lutador mais velho? 
+
 print(Player.idades())
 # Quantas lutas aconteceram em uma arena vazia? (empty_arena)
 

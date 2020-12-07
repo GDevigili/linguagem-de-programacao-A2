@@ -157,7 +157,9 @@ class UFCMaster:
         # aux_df = pd.DataFrame(self.df[azuis, vermelhos].value_counts())
         # return aux_df
         
-     def idades(self):
+        pass
+        
+    def idades(self):
          idadeAzul =  max(self.df["B_age"])
          idadeVermelha = max(self.df["R_age"])
          if idadeAzul > idadeVermelha:
