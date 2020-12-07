@@ -26,10 +26,9 @@ print(Player.ataquesSignificativos())
 # Quantas vitórias por decisão unânime o lado azul teve? (B_win_by_Decision_Unanimous)
 
 # Quantos anos tem o lutador mais velho? 
-
 print(Player.idades())
 # Quantas lutas aconteceram em uma arena vazia? (empty_arena)
-
+print(Player.Void())
 # Quantas vitórias o lado vermelho teve a mais que o azul?
 vitoriasAzul = Player.df[Player.df["Winner"] == "Blue"]["Winner"].value_counts().head(1)[0]
 vitoriasVermelhas = Player.df[Player.df["Winner"] == "Red"]["Winner"].value_counts().head(1)[0]

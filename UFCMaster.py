@@ -165,3 +165,8 @@ class UFCMaster:
          if idadeAzul > idadeVermelha:
             return (f"A idade é: {idadeAzul} (Lado azul)")
          else: return (f"A idade é: {idadeVermelha} (Lado vermelho)")
+         
+    def Void(self):
+        enchimento = max(self.df["empty_arena"])
+        return len(self.df[self.df["empty_arena"] == enchimento])
+    
