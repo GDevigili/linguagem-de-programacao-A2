@@ -195,3 +195,38 @@ class UFCMaster:
         unanimidade = pd.concat([unAzul, unVermelho], ignore_index=True)
         return unanimidade.value_counts()[:1].index.tolist()[0]
         
+
+        
+
+# a = UFCMaster()
+
+# # Qual lado ganhou mais?
+# print(a.vitoriasPorLado())
+# # Quem ganhou mais lutas?
+# print(a.vitoriasPorLutador())
+# # Qual peso que tem mais integrantes?
+# print(a.contagemCategoria())
+# # Quem ganhou mais vezes seguidas?
+# print(a.vitoriasSeguidas())
+# # Quem perdeu mais vezes seguidas?
+# print(a.derrotasSeguidas())
+# # Quantos rounds durou a maior luta?
+# print(a.maiorLuta())
+# # Quantas lutas tiveram um número mínimo de rounds?
+# print(a.menorLuta())
+# # Qual o máximo de ataques significativos dados por minuto? 
+# print(a.ataquesSignificativos())
+# # Quantos anos tem o lutador mais velho? 
+# print(a.idadeMaxima())
+# # Quantas lutas aconteceram em uma arena vazia? 
+# print(a.void())
+# # Quantas vitórias por decisão unânime ocorreram? 
+# print(a.decisao())
+# # Quantas derrubadas o lado azul fez a cada 15 minutos? (B_avg_TD_landed)
+
+
+
+# # Quantas vitórias o lado vermelho teve a mais que o azul?
+# vitoriasAzul = a.df[a.df["Winner"] == "Blue"]["Winner"].value_counts().head(1)[0]
+# vitoriasVermelhas = a.df[a.df["Winner"] == "Red"]["Winner"].value_counts().head(1)[0]
+# print(vitoriasVermelhas - vitoriasAzul)
