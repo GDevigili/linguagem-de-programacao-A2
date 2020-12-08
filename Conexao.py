@@ -48,7 +48,29 @@ class Conexao:
             
         """
         try:
-            return pd.read_sql("SELECT * FROM ufc.ufc_master;", self.conexao)
+            return pd.read_sql("""SELECT 
+                                    Winner,
+                                    R_fighter,
+                                    B_fighter,
+                                    B_longest_win_streak,
+                                    R_longest_win_streak,
+                                    B_current_lose_streak,
+                                    R_current_lose_streak,
+                                    B_age,
+                                    R_age,
+                                    R_avg_TD_landed,
+                                    B_avg_TD_landed,
+                                    B_losses,
+                                    R_losses,
+                                    B_win_by_Decision_Unanimous,
+                                    R_win_by_Decision_Unanimous,
+                                    B_avg_SIG_STR_landed, 
+                                    R_avg_SIG_STR_landed,
+                                    weight_class,
+                                    loss_dif,
+                                    no_of_rounds,
+                                    empty_arena
+                               FROM ufc.ufc_master;""", self.conexao)
         except pyodbc.Error as ex:
             sqlstate = ex.args[0]
             if sqlstate == '08S01':
@@ -66,7 +88,7 @@ class Conexao:
             
         """
         try:
-            return pd.read_sql("SELECT * FROM covid.covid_impact_on_airport_traffic;", self.conexao)
+            return pd.read_sql("SELECT Country, PercentOfBaseline, City, Date FROM covid.covid_impact_on_airport_traffic;", self.conexao)
         except pyodbc.Error as ex:
             sqlstate = ex.args[0]
             if sqlstate == '08S01':

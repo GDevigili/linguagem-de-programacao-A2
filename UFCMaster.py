@@ -52,7 +52,7 @@ class UFCMaster:
         azuis = self.df[self.df["Winner"] == "Blue"]["B_fighter"]
         winners = pd.concat([azuis,vermelhos], ignore_index=True)
         
-        return winners.value_counts()[:1].index.tolist()[0]
+        return winners.value_counts()[:1].index.tolist()
      
     def contagemCategoria(self):
         """
@@ -69,7 +69,6 @@ class UFCMaster:
         contGrupos = grouped.count()
         
         categoria = contGrupos[contGrupos.values == max(contGrupos.values)].index[0]
-        print("A categoria de peso que mais tem integrantes é "+categoria)
         return categoria
         
     def vitoriasSeguidas(self):
@@ -167,12 +166,12 @@ class UFCMaster:
             Idade do lutador mais velho.
 
         """
-         idadeAzul =  max(self.df["B_age"])
-         idadeVermelha = max(self.df["R_age"])
-         if idadeAzul > idadeVermelha:
-             return (f"A idade é: {idadeAzul} (Lado azul)")
-         else:
-             return (f"A idade é: {idadeVermelha} (Lado vermelho)")
+        idadeAzul =  max(self.df["B_age"])
+        idadeVermelha = max(self.df["R_age"])
+        if idadeAzul > idadeVermelha:
+            return (f"A idade é: {idadeAzul} (Lado azul)")
+        else:
+            return (f"A idade é: {idadeVermelha} (Lado vermelho)")
          
     def Void(self):
         """
@@ -189,4 +188,11 @@ class UFCMaster:
     
     def Decisao(self):
         pass
-    
+
+a = UFCMaster()
+print(a.vitoriasPorLado())
+print(a.vitoriasPorLutador())
+print(a.contagemCategoria())
+print(a.vitoriasSeguidas())
+print(a.maiorLuta())
+print(a.idades())
