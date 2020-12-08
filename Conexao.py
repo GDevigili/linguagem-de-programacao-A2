@@ -1,5 +1,6 @@
 import pyodbc
 import pandas as pd
+import sys
 
 server = "fgv-db-server.database.windows.net"
 database = "fgv-db"
@@ -30,8 +31,9 @@ class Conexao:
             sqlstate = ex.args[0]
             if sqlstate == '28000':
                 ("LDAP Connection failed: check password")
-                print("Senha incorreta. Tente Novamente.")
-         
+                print("Usuário e/ou senha incorretos. Tente Novamente.")
+            sys.exit()
+                
     # Isso vai para a respectiva classe
     def getUfcDataFrame(self):
         """
@@ -68,3 +70,5 @@ class Conexao:
         """
         self.conexao.close()
         
+c = Conexao()
+c.getCovidImpactDataFrame()
