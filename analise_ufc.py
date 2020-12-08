@@ -7,7 +7,7 @@ from UFCMaster import UFCMaster
 um = UFCMaster()
 print(um.df.head())
 
-data2 = pd.read_csv("datasets/ufc-master.csv", index_col=0)
+data2 = um.df
 
 print(data2.keys())
 
