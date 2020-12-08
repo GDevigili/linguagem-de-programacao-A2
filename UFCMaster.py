@@ -156,7 +156,7 @@ class UFCMaster:
         
         pass
         
-    def idades(self):
+    def idadeMaxima(self):
         """
         Responde a pergunta 'Quantos anos tem o lutador mais velho?'.
 
@@ -173,7 +173,7 @@ class UFCMaster:
         else:
             return (f"A idade é: {idadeVermelha} (Lado vermelho)")
          
-    def Void(self):
+    def void(self):
         """
         Responde a pergunta 'Quantas lutas aconteceram em uma arena vazia?'.
 
@@ -186,13 +186,45 @@ class UFCMaster:
         enchimento = max(self.df["empty_arena"])
         return len(self.df[self.df["empty_arena"] == enchimento])
     
-    def Decisao(self):
-        pass
+    def decisao(self):
+        unanimidadeAzul = self.df["B_win_by_Decision_Unanimous"]
+        unanimidadeVermelha = self.df["R_win_by_Decision_Unanimous"]
+        
+        unAzul = pd.Series(self.df[self.df["B_win_by_Decision_Unanimous"] == unanimidadeAzul]["B_fighter"].values)
+        unVermelho = pd.Series(self.df[self.df["R_win_by_Decision_Unanimous"] == unanimidadeVermelha]["R_fighter"].values)
+        unanimidade = pd.concat([unAzul, unVermelho], ignore_index=True)
+        return unanimidade.value_counts()[:1].index.tolist()[0]
+        
+
+        
 
 a = UFCMaster()
+
+# Qual lado ganhou mais?
 print(a.vitoriasPorLado())
+# Quem ganhou mais lutas?
 print(a.vitoriasPorLutador())
+# Qual peso que tem mais integrantes?
 print(a.contagemCategoria())
+# Quem ganhou mais vezes seguidas?
 print(a.vitoriasSeguidas())
+# Quem perdeu mais vezes seguidas?
+print(a.derrotasSeguidas())
+# Quantos rounds durou a maior luta?
 print(a.maiorLuta())
-print(a.idades())
+# Quantas lutas tiveram um número mínimo de rounds?
+print(a.menorLuta())
+# Qual o máximo de ataques significativos dados por minuto? 
+print(a.ataquesSignificativos())
+# Quantas derrubadas o lado azul fez a cada 15 minutos? (B_avg_TD_landed)
+
+# Quantas vitórias por decisão unânime ocorreram? 
+print(a.decisao())
+# Quantos anos tem o lutador mais velho? 
+print(a.idadeMaxima())
+# Quantas lutas aconteceram em uma arena vazia? (empty_arena)
+print(a.void())
+# Quantas vitórias o lado vermelho teve a mais que o azul?
+vitoriasAzul = a.df[a.df["Winner"] == "Blue"]["Winner"].value_counts().head(1)[0]
+vitoriasVermelhas = a.df[a.df["Winner"] == "Red"]["Winner"].value_counts().head(1)[0]
+print(vitoriasVermelhas - vitoriasAzul)

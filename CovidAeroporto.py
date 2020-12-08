@@ -90,3 +90,27 @@ class CovidAeroporto():
 
         """
         return pd.DataFrame(self.df[["Date", "PercentOfBaseline"]].groupby("Date").mean().sort_values(by=['PercentOfBaseline'], ascending=False))
+
+a = CovidAeroporto()
+
+# Qual dia teve o maior número de voos internacionalmente?
+print(a.maiorNumeroVoosPorDia())
+# Qual dia teve o menor número de voos internacionalmente?
+print(a.menorNumeroVoosPorDia())
+# Comparando o dia com mais voos com o mesmo dia da semana no período de baselina, o número de voos aumentou ou abaixou?
+if a.maiorNumeroVoosPorDia() >= a.baselinePorDia():
+   print("O número de voos aumentou")
+else: print("O número de voos diminuiu")    
+# Comparando o dia com menos voos com o mesmo dia da semana no período de baselina, o número de voos aumentou ou abaixou?
+if a.menorNumeroVoosPorDia() >= a.baselinePorDia():
+   print("O número de voos aumentou")
+else: print("O número de voos diminuiu")
+# Em quais países o número de voos aumentou comparado com o período?
+if a.baselinesPorPais() >= a.baselinePorDia():
+    print(con.Country)
+# Em que cidades dos EUA o número de voos aumentou?
+if a.baselinePorCidade >= a.baselinePorDia():
+   print(con.City)  
+# Em que cidades dos EUA o número de voos diminuiu?
+if a.baselinePorCidade <= a.baselinePorDia():
+   print(con.City)
