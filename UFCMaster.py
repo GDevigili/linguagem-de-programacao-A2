@@ -136,7 +136,7 @@ class UFCMaster:
         
     def menorLuta(self):
         """
-        Responde a pergunta 'Quantas partida duraram menos rounds?'.
+        Responde a pergunta 'Quantas partidas duraram menos rounds?'.
 
         Returns
         -------
@@ -160,13 +160,32 @@ class UFCMaster:
         pass
         
     def idades(self):
+        """
+        Responde a pergunta 'Quantos anos tem o lutador mais velho?'.
+
+        Returns
+        -------
+        str
+            Idade do lutador mais velho.
+
+        """
          idadeAzul =  max(self.df["B_age"])
          idadeVermelha = max(self.df["R_age"])
          if idadeAzul > idadeVermelha:
-            return (f"A idade é: {idadeAzul} (Lado azul)")
-         else: return (f"A idade é: {idadeVermelha} (Lado vermelho)")
+             return (f"A idade é: {idadeAzul} (Lado azul)")
+         else:
+             return (f"A idade é: {idadeVermelha} (Lado vermelho)")
          
     def Void(self):
+        """
+        Responde a pergunta 'Quantas lutas aconteceram em uma arena vazia?'.
+
+        Returns
+        -------
+        int
+            Numero de lutas ocorridas em arenas vazias.
+
+        """
         enchimento = max(self.df["empty_arena"])
         return len(self.df[self.df["empty_arena"] == enchimento])
     
