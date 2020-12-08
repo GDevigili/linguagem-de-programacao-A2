@@ -97,7 +97,7 @@ class UFCMaster:
     
     def derrotasSeguidas(self):
         """
-        Responde a pergunta 'Quem perdeu mais vezes seguidas?'.
+        Responde a pergunta 'Qual é a série de derrotas atual?'.
 
         Returns
         -------
@@ -208,7 +208,7 @@ print(a.vitoriasPorLutador())
 print(a.contagemCategoria())
 # Quem ganhou mais vezes seguidas?
 print(a.vitoriasSeguidas())
-# Quem perdeu mais vezes seguidas?
+# Qual é a série de derrotas atual?
 print(a.derrotasSeguidas())
 # Quantos rounds durou a maior luta?
 print(a.maiorLuta())
