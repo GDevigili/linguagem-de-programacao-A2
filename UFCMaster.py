@@ -216,14 +216,16 @@ print(a.maiorLuta())
 print(a.menorLuta())
 # Qual o máximo de ataques significativos dados por minuto? 
 print(a.ataquesSignificativos())
-# Quantas derrubadas o lado azul fez a cada 15 minutos? (B_avg_TD_landed)
-
-# Quantas vitórias por decisão unânime ocorreram? 
-print(a.decisao())
 # Quantos anos tem o lutador mais velho? 
 print(a.idadeMaxima())
-# Quantas lutas aconteceram em uma arena vazia? (empty_arena)
+# Quantas lutas aconteceram em uma arena vazia? 
 print(a.void())
+# Quantas vitórias por decisão unânime ocorreram? 
+print(a.decisao())
+# Quantas derrubadas o lado azul fez a cada 15 minutos? (B_avg_TD_landed)
+
+
+
 # Quantas vitórias o lado vermelho teve a mais que o azul?
 vitoriasAzul = a.df[a.df["Winner"] == "Blue"]["Winner"].value_counts().head(1)[0]
 vitoriasVermelhas = a.df[a.df["Winner"] == "Red"]["Winner"].value_counts().head(1)[0]
