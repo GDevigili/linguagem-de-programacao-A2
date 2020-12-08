@@ -1,6 +1,5 @@
 import Conexao as con
 import pandas as pd
-# from datetime import datetime
 
 class CovidAeroporto():
     """Constroi um método para responder cada pergunta feita."""
@@ -70,29 +69,3 @@ class CovidAeroporto():
         """
         return pd.DataFrame(self.df[["Date", "PercentOfBaseline"]].groupby("Date").mean())
     
-    
-# -----------Já tava aqui antes
-
-# print(data1.keys())
-
-# print(data1.head())
-# print(data1.describe())
-
-# df = pd.DataFrame(data1)
-# print(df)
-
-# ##############PLOT COMPARACAO DE VOOS POR AEROPORTO###############
-# print(data1.groupby("Date").mean())
-# print(data1.groupby("AirportName").mean())
-# print(data1.groupby(["Date", "AirportName"]).mean())
-
-# viagens_por_aeroporto = data1.groupby(["Date", "AirportName"]).mean()
-# print(type(viagens_por_aeroporto))
-
-# viagens_por_aeroporto["PercentOfBaseline"].plot.bar()
-# plt.show()
-
-# c = CovidAeroporto()
-# c.baselinePorCidade()
-# c.numeroVoosPorDia()
-# c.baselinePorDia()
