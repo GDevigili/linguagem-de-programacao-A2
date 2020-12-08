@@ -87,7 +87,7 @@ class Conexao:
                 print("A conexao com o banco de dados foi perdida. Tente novamente.")
             sys.exit()
 
-        if(df == None):
+        if(df.empty):
             raise Excecoes.ExcecaoVazio(df)
         return df
     
@@ -111,7 +111,7 @@ class Conexao:
             sys.exit()
         
          
-        if(df == None):
+        if(df.empty):
             raise Excecoes.ExcecaoVazio(df)
         return df
     
