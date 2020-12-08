@@ -6,31 +6,34 @@ c = cov.CovidAeroporto()
 class TesteModuloCovidAeroporto(unittest.TestCase):
         
     def test_maiorNumeroVoosPorDia(self):
-        self.assertEqual(c.maiorNumeroVoosPorDia(), DataFrame...)
+        self.assertIsNotNone(c.maiorNumeroVoosPorDia())
     
     def test_menorNumeroVoosPorDia(self):
-        self.assertEqual(c.menorNumeroVoosPorDia(), DataFrame...)
+        self.assertIsNotNone(c.menorNumeroVoosPorDia())
         
     def test_maiorBaselinePorDia(self):
-        self.assertEqual(c.maiorBaselinePorDia(), DataFrame...)
+        self.assertIsNotNone(c.maiorBaselinePorDia())
+        
+    def test_menorBaselinePorDia(self):
+        self.assertIsNotNone(c.menorBaselinePorDia())     
      
-    def test_menorBaselinePorCidade(self):
-        self.assertEqual(c.menorBaselinePorCidade(), DataFrame...)     
-     
+    def test_maiorBaselinePorCidade(self):
+        self.assertIsNotNone(c.maiorBaselinePorCidade())
+        
     def test_maiorBaselinePorEstado(self):
-        self.assertEqual(c.maiorBaselinePorEstado(), DataFrame...)     
+        self.assertIsNotNone(c.maiorBaselinePorEstado())  
      
     def test_maiorBaselinePorPais(self):
-        self.assertEqual(c.maiorBaselinePorPais(), DataFrame...)     
+        self.assertIsNotNone(c.maiorBaselinePorPais())     
         
     def test_menorBaselinePorCidade(self):
-        self.assertEqual(c.menorBaselinePorCidade(), DataFrame...)    
+       self.assertIsNotNone(c.menorBaselinePorCidade())    
         
     def test_menorBaselinePorEstado(self):
-        self.assertEqual(c.menorBaselinePorEstado(), DataFrame...)
+        self.assertIsNotNone(c.menorBaselinePorEstado())
         
     def test_menorBaselinePorPais(self):
-        self.assertEqual(c.menorBaselinePorPais(), DataFrame...)    
+        self.assertIsNotNone(c.menorBaselinePorPais())    
         
 if __name__ == '__main__':
     # begin the unittest.main()
