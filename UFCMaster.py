@@ -1,8 +1,6 @@
 import Conexao as con
 import pandas as pd
 
-#FAZER CLASSE AQUI
-
 class UFCMaster:
     """Constroi um método para responder cada pergunta feita."""
     

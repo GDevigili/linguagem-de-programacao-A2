@@ -84,5 +84,3 @@ class Conexao:
         """
         self.conexao.close()
         
-c = Conexao()
-c.getUfcDataFrame()
