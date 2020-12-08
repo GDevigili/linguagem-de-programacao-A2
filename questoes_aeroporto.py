@@ -3,6 +3,10 @@ from CovidAeroporto import CovidAeroporto
 #####################QUESTÕES AEROPORTO#####################
 Pilot = CovidAeroporto()
 
+# Qual dia teve o maior número de voos internacionalmente?
+print(Pilot.maiorNumeroVoosPorDia())
+# Qual dia teve o menor número de voos internacionalmente?
+print(Pilot.menorNumeroVoosPorDia())
 # Em quais países o número de voos aumentou comparado com o período?
 if Pilot.baselinesPorPais() >= Pilot.baselinePorDia():
     print(Pilot.Country)
@@ -12,10 +16,6 @@ if Pilot.baselinePorCidade >= Pilot.baselinePorDia():
 # Em que cidades dos EUA o número de voos diminuiu?
 if Pilot.baselinePorCidade <= Pilot.baselinePorDia():
    print(Pilot.City)  
-# Qual dia teve o maior número de voos internacionalmente?
-print(Pilot.numeroVoosPorDia().values_sort(by = ["Date"], ascending = False))
-# Qual dia teve o menor número de voos internacionalmente?
-print(Pilot.numeroVoosPorDia().values_sort(by = ["Date"], ascending = True))
 # Comparando o dia com mais voos com o mesmo dia da semana no período de baselina, o número de voos aumentou ou abaixou?
 if Pilot.numeroVoosPorDia().values_sort(by = ["Date"], ascending = False) >= Pilot.baselinePorDia():
    print("O número de voos aumentou")
