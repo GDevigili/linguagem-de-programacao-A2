@@ -29,13 +29,13 @@ class TesteModuloUFCMaster(unittest.TestCase):
     def test_ataquesSignificativos(self):
         self.assertEqual(ufc.ataquesSignificativos(), None)
         
-    def test_idades(self):
+    def test_idadeMaxima(self):
         self.assertEqual(ufc.idades(), "A idade é: 47 (Lado vermelho)")
         
-    def test_Void(self):
+    def test_void(self):
         self.assertEqual(ufc.Void(), 317)
         
-    def test_Decisao(self):
+    def test_decisao(self):
         self.assertEqual(ufc.Decisao(), None)
         
 # c = TesteModuloUFCMaster()
@@ -47,6 +47,6 @@ class TesteModuloUFCMaster(unittest.TestCase):
 # c.test_maiorLuta()
 # c.test_menorLuta()
 # c.test_ataquesSignificativos()
-# c.test_idades()
-# c.test_Void()
-# c.test_Decisao()
+# c.test_idadeMaxima()
+# c.test_void()
+# c.test_decisao()
