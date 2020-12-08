@@ -38,23 +38,27 @@ O grupo optou por trabalhar com os dados sobre UFC e impacto da COVID-19 no trá
     \item Quantas partidas duraram menos?
     \item Qual peso que tem mais integrantes?
     \item Quem ganhou mais vezes seguidas?
-    \item Quem perdeu mais vezes seguidas?
+    \item Qual é a série de derrotas atual?
     \item Quantos rounds durou a maior luta?
-    \item Qual o máximo de ataques significativos dados pelo lado azul por minuto? 
-    \item Quantas derrubadas o lado azul fez a cada 15 minutos?
-    \item Quantas vitórias por decisão unânime o lado azul teve? 
+    \item Quantas lutas tiveram um número mínimo de rounds?
+    \item Quantas lutas aconteceram em uma arena vazia?
+    \item Quem ganhou mais lutas por decisão unânime?
     \item Quantos anos tem o lutador mais velho? 
 \end{itemize}
 
-\par Em relação à base de dados sobre o impacto do COVID-19 no tráfego do aeroporto, as seguintes perguntas foram formuladas:
+\par Em relação à base de dados sobre o impacto da COVID-19 no tráfego do aeroporto, as seguintes perguntas foram formuladas:
+
 \begin{itemize}
-    \item Em quais países o número de voos aumentou comparado com o período?
-    \item Em que cidades dos EUA o número de voos aumentou?
-    \item Em que cidades dos EUA o número de voos diminuiu?
     \item Qual dia teve o maior número de voos internacionalmente?
     \item Qual dia teve o menor número de voos internacionalmente?
-    \item Comparando o dia com mais voos com o mesmo dia da semana no período de baselina, o número de voos aumentou ou abaixou?
-    \item Comparando o dia com menos voos com o mesmo dia da semana no período de baselina, o número de voos aumentou ou abaixou?
+    \item Qual foi o dia com a maior baseline média?
+    \item Qual foi o dia com a menor baseline média?
+    \item Qual cidade teve a maior porcentagem de baseline?
+    \item Qual estado teve a maior porcentagem de baseline?
+    \item Qual país teve a maior porcentagem de baseline?
+    \item Qual cidade teve a menor porcentagem de baseline?
+    \item Qual estado teve a menor porcentagem de baseline?
+    \item Qual país teve a menor porcentagem de baseline?
 \end{itemize}
 
 \section{Organização em módulos}
@@ -82,7 +86,7 @@ A base de dados fornecida é composta de 4473 linhas e 136 colunas. A base forne
 
 \begin{figure}[H] 
     \centering 
-    \includegraphics[scale = 0.7]{ganhador_lado.png} 
+    \includegraphics[scale = 0.6]{ganhador_lado.png} 
 \end{figure}
 
 \par Apesar de todas as lutas serem dueladas por um lutador vermelho e outro azul e os dois pertencerem a mesma categoria, pela visualização, o lado vermelho ganhou mais lutas com uma diferença considerável.
@@ -90,7 +94,7 @@ A base de dados fornecida é composta de 4473 linhas e 136 colunas. A base forne
     
 \begin{figure}[H] 
     \centering 
-    \includegraphics[scale = 0.7]{lutador_categoria.png} 
+    \includegraphics[scale = 0.6]{lutador_categoria.png} 
 \end{figure}
 
 \par As cinco categorias com maior número de integrantes são: Lightweight, Welterweight, Middleweight, Featherweight e Bantamweight. Dessa forma, a maior parte dos lutadores estão em categorias com peso limite baixos.
@@ -98,14 +102,14 @@ A base de dados fornecida é composta de 4473 linhas e 136 colunas. A base forne
     
 \begin{figure}[H] 
     \centering 
-    \includegraphics[scale = 0.7]{lutadores_mais_vitorias.png} 
+    \includegraphics[scale = 0.6]{lutadores_mais_vitorias.png} 
 \end{figure}
   
 \par Os quatro lutadores com mais vitórias venceram mais de quatro mil lutas cada, sendo a diferença entre eles miníma. 
 
 \begin{figure}[H] 
     \centering 
-    \includegraphics[scale = 0.7]{lutadores_menos_vitorias.png} 
+    \includegraphics[scale = 0.6]{lutadores_menos_vitorias.png} 
 \end{figure}
 
 \par Já, os cinco lutares com menor número de vitórias ganharam menos de vinte lutas juntos. Desse modo, é discrepante a diferença entre os lutadores com maior rendimento e os lutadores com menos número de vitórias.
@@ -113,7 +117,7 @@ A base de dados fornecida é composta de 4473 linhas e 136 colunas. A base forne
 
 \begin{figure}[H] 
     \centering 
-    \includegraphics[scale = 0.7]{lutas_rounds.png} 
+    \includegraphics[scale = 0.6]{lutas_rounds.png} 
 \end{figure}
 
 \par A maior parte das lutas tiveram três rounds. 
@@ -123,9 +127,18 @@ A base de dados fornecida é composta de 5936 linhas e 10 colunas. A base fornec
 
 \begin{figure}[H] 
     \centering 
-    \includegraphics[scale = 0.7]{dias_percentofbaseline.png} 
+    \includegraphics[scale = 0.6]{dias_percentofbaseline.png} 
 \end{figure}
 
 Por meio da visualização, é possível perceber nos meses de abril e maio houve um decréscimo da PercentOfBaseline. Esses meses correspondem ao início da pandemia. Assim, nesse período, a preocupação e medidas de isolamento estavam mais sólidas. Após março e abril, percebe-se que a PercentOfBaseline permaneceu sem bruscas alterações. 
+\par Após ter conhecimento sobre a variação da PercentOfBaseline ao longo dos meses, é interessante avaliar se a quantidade de voos sofreu alguma modificação relevante.
+\par Outro aspecto a ser analisado é a distribuição da PercentOfBaseline. 
+
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[scale = 0.6]{dias_qntvoos.png} 
+\end{figure}
+
+Pela visualização, nota-se que, em um dia de agosto ou de setembro, a quantidade de voos abaixou consideravelmente. Porém, os demais dados apresentam um certo padrão. Dessa forma, não é possível afirmar que essa alteração no número de voos é consequência da COVID-19, uma vez que o número de voos pode ter diminuído pelas condições climáticas no referido dia.
 
 \end{document}
