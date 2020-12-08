@@ -57,6 +57,25 @@ O grupo optou por trabalhar com os dados sobre UFC e impacto da COVID-19 no trá
     \item Comparando o dia com menos voos com o mesmo dia da semana no período de baselina, o número de voos aumentou ou abaixou?
 \end{itemize}
 
+\section{Organização em módulos}
+O projeto está dividido nos seguintes módulos:
+\begin{itemize}
+    \item Conexao: responsável por conectar ao banco de dados e filtrar as colunas que serão usadas
+    \item CovidAeroporto: contém a classe CovidAeroporto que possui como atributo com os dados da respectiva base de dados e algumas filtragens da mesma
+    \item UFCMasters: contém a classe UFCMasters que possui como atributo o dataframe com os dados da respectiva base de dados e algumas filtragens da mesma
+    \item Test\_CovidAeroporto: realiza os testes dos métodos da classe CovidAeroporto
+    \item Test\_UFCMasters: realiza os testes dos métodos da classe UFCMasters
+    \item analise\_aeroporto: realiza a análise do dataframe UFCMasters
+    \item analise\_ufc: realiza a análise do dataframe UFCMasters
+    \item visualizacoes\_aeroporto: módulo que contém as visualizações referentes ao dataframe da classe CovidAeroporto
+    \item visualizacoes\_ufc: módulo que contém as visualizações referentes ao dataframe da classe UFCMasters
+\end{itemize}
+
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[scale = 0.8]{class-diagram.png} 
+\end{figure}
+
 \section{Análise dos dados}
 \subsection{UFC}
 A base de dados fornecida é composta de 4473 linhas e 136 colunas. A base fornece informações sobre o local, vencedor, idade dos lutadores, número de rounds da lutas, entre outros detalhes. Exploraremos os dados, de modo a compreender melhor o perfil dessas lutas. Inicialmente, analisaremos qual lado (vermelho ou azul) ganhou mais.
