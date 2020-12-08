@@ -195,9 +195,9 @@ print(a.maiorBaselinePorDia())
 print(a.menorBaselinePorDia())
 #Qual cidade teve a maior porcentagem de baseline?
 print(a.maiorBaselinePorCidade())
-#Qual estado teve a menor porcentagem de baseline?
+#Qual estado teve a maior porcentagem de baseline?
 print(a.maiorBaselinePorEstado())
-#Qual país teve a menor porcentagem de baseline?
+#Qual país teve a maior porcentagem de baseline?
 print(a.maiorBaselinePorPais())
 #Qual cidade teve a menor porcentagem de baseline?
 print(a.menorBaselinePorCidade())
