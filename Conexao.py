@@ -1,6 +1,7 @@
 import pyodbc
 import pandas as pd
 import sys
+import Excecoes
 
 server = "fgv-db-server.database.windows.net"
 database = "fgv-db"
@@ -47,8 +48,9 @@ class Conexao:
             DataFrame correspondente a toda a tabela 'ufc.ufc_master'.
             
         """
+        df = None
         try:
-            return pd.read_sql("""SELECT 
+            df = pd.read_sql("""SELECT 
                                     Winner,
                                     R_fighter,
                                     B_fighter,
@@ -84,6 +86,10 @@ class Conexao:
             if sqlstate == '08S01':
                 print("A conexao com o banco de dados foi perdida. Tente novamente.")
             sys.exit()
+
+        if(df == None):
+            raise Excecoes.ExcecaoVazio(df)
+        return df
     
     def getCovidImpactDataFrame(self):
         """
@@ -95,13 +101,19 @@ class Conexao:
             DataFrame correspondente a toda a tabela 'covid.covid_impact_on_airport_traffic'.
             
         """
+        df = None
         try:
-            return pd.read_sql("SELECT Country, PercentOfBaseline, City, AirportName, Centroid, Geography, State, Date FROM covid.covid_impact_on_airport_traffic;", self.conexao)
+            df = pd.read_sql("SELECT Country, PercentOfBaseline, City, AirportName, Centroid, Geography, State, Date FROM covid.covid_impact_on_airport_traffic;", self.conexao)
         except pyodbc.Error as ex:
             sqlstate = ex.args[0]
             if sqlstate == '08S01':
                 print("A conexao com o banco de dados foi perdida. Tente novamente.")
             sys.exit()
+        
+         
+        if(df == None):
+            raise Excecoes.ExcecaoVazio(df)
+        return df
     
     def fecharConexao(self):
         """
@@ -113,4 +125,3 @@ class Conexao:
         
         """
         self.conexao.close()
-        
