@@ -97,7 +97,7 @@ class UFCMaster:
     
     def derrotasSeguidas(self):
         """
-        Responde a pergunta 'Quem perdeu mais vezes seguidas?'.
+        Responde a pergunta 'Qual é a série de derrotas atual?'.
 
         Returns
         -------
@@ -198,35 +198,35 @@ class UFCMaster:
 
         
 
-# a = UFCMaster()
+a = UFCMaster()
 
-# # Qual lado ganhou mais?
-# print(a.vitoriasPorLado())
-# # Quem ganhou mais lutas?
-# print(a.vitoriasPorLutador())
-# # Qual peso que tem mais integrantes?
-# print(a.contagemCategoria())
-# # Quem ganhou mais vezes seguidas?
-# print(a.vitoriasSeguidas())
-# # Quem perdeu mais vezes seguidas?
-# print(a.derrotasSeguidas())
-# # Quantos rounds durou a maior luta?
-# print(a.maiorLuta())
-# # Quantas lutas tiveram um número mínimo de rounds?
-# print(a.menorLuta())
-# # Qual o máximo de ataques significativos dados por minuto? 
-# print(a.ataquesSignificativos())
-# # Quantos anos tem o lutador mais velho? 
-# print(a.idadeMaxima())
-# # Quantas lutas aconteceram em uma arena vazia? 
-# print(a.void())
-# # Quantas vitórias por decisão unânime ocorreram? 
-# print(a.decisao())
-# # Quantas derrubadas o lado azul fez a cada 15 minutos? (B_avg_TD_landed)
+# Qual lado ganhou mais?
+print(a.vitoriasPorLado())
+# Quem ganhou mais lutas?
+print(a.vitoriasPorLutador())
+# Qual peso que tem mais integrantes?
+print(a.contagemCategoria())
+# Quem ganhou mais vezes seguidas?
+print(a.vitoriasSeguidas())
+# Qual é a série de derrotas atual?
+print(a.derrotasSeguidas())
+# Quantos rounds durou a maior luta?
+print(a.maiorLuta())
+# Quantas lutas tiveram um número mínimo de rounds?
+print(a.menorLuta())
+# Qual o máximo de ataques significativos dados por minuto? 
+print(a.ataquesSignificativos())
+# Quantos anos tem o lutador mais velho? 
+print(a.idadeMaxima())
+# Quantas lutas aconteceram em uma arena vazia? 
+print(a.void())
+# Quantas vitórias por decisão unânime ocorreram? 
+print(a.decisao())
+# Quantas derrubadas o lado azul fez a cada 15 minutos? (B_avg_TD_landed)
 
 
 
-# # Quantas vitórias o lado vermelho teve a mais que o azul?
-# vitoriasAzul = a.df[a.df["Winner"] == "Blue"]["Winner"].value_counts().head(1)[0]
-# vitoriasVermelhas = a.df[a.df["Winner"] == "Red"]["Winner"].value_counts().head(1)[0]
-# print(vitoriasVermelhas - vitoriasAzul)
+# Quantas vitórias o lado vermelho teve a mais que o azul?
+vitoriasAzul = a.df[a.df["Winner"] == "Blue"]["Winner"].value_counts().head(1)[0]
+vitoriasVermelhas = a.df[a.df["Winner"] == "Red"]["Winner"].value_counts().head(1)[0]
+print(vitoriasVermelhas - vitoriasAzul)
