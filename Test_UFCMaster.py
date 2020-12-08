@@ -1,9 +1,6 @@
 import UFCMaster as ufc
 import unittest
 
-# Acesso à classe do arquivo UFCMaster não está funcionando
-# Arrumar respostas dos testes
-
 c = ufc.UFCMaster()
 
 class TesteModuloUFCMaster(unittest.TestCase):
@@ -43,19 +40,3 @@ class TesteModuloUFCMaster(unittest.TestCase):
 if __name__ == '__main__':
     # begin the unittest.main()
     unittest.main()
-        
-# x = TesteModuloUFCMaster()
-# x.test_vitoriasPorLado()
-# x.test_vitoriasPorLutador()
-# x.test_contagemCategoria()
-# x.test_vitoriasSeguidas()
-# x.test_derrotasSeguidas()
-# x.test_maiorLuta()
-# x.test_menorLuta()
-# x.test_ataquesSignificativos()
-# x.test_idades()
-# x.test_Void()
-# x.test_Decisao()
-
-
-
