@@ -32,6 +32,8 @@ class Conexao:
             if sqlstate == '28000':
                 ("LDAP Connection failed: check password")
                 print("Usuário e/ou senha incorretos. Tente Novamente.")
+            if sqlstate == '08001':
+                print("Não foi possível iniciar a conexao com o banco de dados. Tente novamente.")
             sys.exit()
                 
     # Isso vai para a respectiva classe
@@ -45,7 +47,13 @@ class Conexao:
             DataFrame correspondente a toda a tabela 'ufc.ufc_master'.
             
         """
-        return pd.read_sql("SELECT * FROM ufc.ufc_master;", self.conexao)
+        try:
+            return pd.read_sql("SELECT * FROM ufc.ufc_master;", self.conexao)
+        except pyodbc.Error as ex:
+            sqlstate = ex.args[0]
+            if sqlstate == '08S01':
+                print("A conexao com o banco de dados foi perdida. Tente novamente.")
+            sys.exit()
     
     def getCovidImpactDataFrame(self):
         """
@@ -57,7 +65,13 @@ class Conexao:
             DataFrame correspondente a toda a tabela 'covid.covid_impact_on_airport_traffic'.
             
         """
-        return pd.read_sql("SELECT * FROM covid.covid_impact_on_airport_traffic;", self.conexao)
+        try:
+            return pd.read_sql("SELECT * FROM covid.covid_impact_on_airport_traffic;", self.conexao)
+        except pyodbc.Error as ex:
+            sqlstate = ex.args[0]
+            if sqlstate == '08S01':
+                print("A conexao com o banco de dados foi perdida. Tente novamente.")
+            sys.exit()
     
     def fecharConexao(self):
         """
@@ -71,4 +85,4 @@ class Conexao:
         self.conexao.close()
         
 c = Conexao()
-c.getCovidImpactDataFrame()
+c.getUfcDataFrame()
