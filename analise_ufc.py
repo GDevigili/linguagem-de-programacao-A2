@@ -3,11 +3,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from sklearn import datasets, linear_model, metrics, model_selection
 import seaborn as sns
-from UFCMaster import UFCMaster
-um = UFCMaster()
-print(um.df.head())
+import Conexao as con
 
-data2 = um.df
+c = con.Conexao()
+data2 = c.getUfcDataFrame()
 
 print(data2.keys())
 

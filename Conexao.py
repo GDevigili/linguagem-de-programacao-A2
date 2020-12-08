@@ -96,7 +96,7 @@ class Conexao:
             
         """
         try:
-            return pd.read_sql("SELECT Country, PercentOfBaseline, City, Date FROM covid.covid_impact_on_airport_traffic;", self.conexao)
+            return pd.read_sql("SELECT Country, PercentOfBaseline, City, AirportName, Centroid, Geography, State, Date FROM covid.covid_impact_on_airport_traffic;", self.conexao)
         except pyodbc.Error as ex:
             sqlstate = ex.args[0]
             if sqlstate == '08S01':

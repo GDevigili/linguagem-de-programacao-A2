@@ -2,12 +2,10 @@ import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 from sklearn import datasets, linear_model, metrics, model_selection
-from CovidAeroporto import CovidAeroporto
-ca = CovidAeroporto()
-print(ca.df.head())
+import Conexao as con
 
-
-data1 = pd.read_csv("datasets/covid_impact_on_airport_traffic.csv", index_col=0)
+c = con.Conexao()
+data1 = c.getCovidImpactDataFrame()
 
 print(data1.keys())
 
