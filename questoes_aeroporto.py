@@ -17,10 +17,10 @@ print(Pilot.numeroVoosPorDia().values_sort(by = ["Date"], ascending = False))
 # Qual dia teve o menor número de voos internacionalmente?
 print(Pilot.numeroVoosPorDia().values_sort(by = ["Date"], ascending = True))
 # Comparando o dia com mais voos com o mesmo dia da semana no período de baselina, o número de voos aumentou ou abaixou?
-if Pilot.numeroVoosPorDia() >= Pilot.baselinePorDia():
+if Pilot.numeroVoosPorDia().values_sort(by = ["Date"], ascending = False) >= Pilot.baselinePorDia():
    print("O número de voos aumentou")
 else: print("O número de voos diminuiu")    
 # Comparando o dia com menos voos com o mesmo dia da semana no período de baselina, o número de voos aumentou ou abaixou?
-if Pilot.numeroVoosPorDia() >= Pilot.baselinePorDia():
+if Pilot.numeroVoosPorDia().values_sort(by = ["Date"], ascending = True) >= Pilot.baselinePorDia():
    print("O número de voos aumentou")
 else: print("O número de voos diminuiu")
