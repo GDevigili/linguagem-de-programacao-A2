@@ -74,7 +74,10 @@ class Conexao:
                                     R_current_win_streak,
                                     country,
                                     B_total_rounds_fought,
-                                    R_total_rounds_fought
+                                    R_total_rounds_fought,
+                                    gender,
+                                    B_wins,
+                                    R_wins
                                FROM ufc.ufc_master;""", self.conexao)
         except pyodbc.Error as ex:
             sqlstate = ex.args[0]
