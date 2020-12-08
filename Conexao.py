@@ -36,7 +36,7 @@ class Conexao:
                 print("Não foi possível iniciar a conexao com o banco de dados. Tente novamente.")
             sys.exit()
                 
-    # Isso vai para a respectiva classe
+    
     def getUfcDataFrame(self):
         """
         Importa dados da tabela 'ufc.ufc_master' do banco 'fgv-db'.
@@ -69,7 +69,9 @@ class Conexao:
                                     weight_class,
                                     loss_dif,
                                     no_of_rounds,
-                                    empty_arena
+                                    empty_arena,
+                                    B_current_win_streak,
+                                    R_current_win_streak
                                FROM ufc.ufc_master;""", self.conexao)
         except pyodbc.Error as ex:
             sqlstate = ex.args[0]
