@@ -1,7 +1,6 @@
 import Conexao as con
 import pandas as pd
 import seaborn as sns
-import matplotlib as plt
 
 conexao = con.Conexao()
 df = conexao.getCovidImpactDataFrame()
