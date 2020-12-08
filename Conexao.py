@@ -36,7 +36,7 @@ class Conexao:
                 print("Não foi possível iniciar a conexao com o banco de dados. Tente novamente.")
             sys.exit()
                 
-    # Isso vai para a respectiva classe
+    
     def getUfcDataFrame(self):
         """
         Importa dados da tabela 'ufc.ufc_master' do banco 'fgv-db'.
