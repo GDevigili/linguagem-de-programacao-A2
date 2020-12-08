@@ -37,6 +37,8 @@ class UFCMaster:
         else:
             return "Empate"
         
+        
+        
     def vitoriasPorLutador(self):
         """
         Responde a pergunta 'Quem ganhou mais lutas?'.
@@ -143,18 +145,6 @@ class UFCMaster:
         """
         minimo = min(self.df["no_of_rounds"])
         return len(self.df[self.df["no_of_rounds"] == minimo])
-
-    def ataquesSignificativos(self):
-        # vermelhos = self.df[self.df["R_avg_SIG_STR_landed"] == "Red"]["R_avg_SIG_STR_landed"]
-        # azuis = self.df[self.df["B_avg_SIG_STR_landed"] == "Blue"]["B_avg_SIG_STR_landed"]
-        
-        # #maximoAtaquesSignificativosB = max(self.df["B_avg_SIG_STR_landed"])
-        # #maximoAtaquesSignificativosR = max(self.df["R_avg_SIG_STR_landed"])
-       
-        # aux_df = pd.DataFrame(self.df[azuis, vermelhos].value_counts())
-        # return aux_df
-        
-        pass
         
     def idadeMaxima(self):
         """
@@ -187,16 +177,19 @@ class UFCMaster:
         return len(self.df[self.df["empty_arena"] == enchimento])
     
     def decisao(self):
-        unanimidadeAzul = self.df["B_win_by_Decision_Unanimous"]
-        unanimidadeVermelha = self.df["R_win_by_Decision_Unanimous"]
+        unanimidadeAzul = max(self.df["B_win_by_Decision_Unanimous"])
+        unanimidadeVermelha = max(self.df["R_win_by_Decision_Unanimous"])
         
         unAzul = pd.Series(self.df[self.df["B_win_by_Decision_Unanimous"] == unanimidadeAzul]["B_fighter"].values)
         unVermelho = pd.Series(self.df[self.df["R_win_by_Decision_Unanimous"] == unanimidadeVermelha]["R_fighter"].values)
         unanimidade = pd.concat([unAzul, unVermelho], ignore_index=True)
-        return unanimidade.value_counts()[:1].index.tolist()[0]
+        return unanimidade.value_counts()[:1].index.tolist()
         
-
-        
+    def diferenca(self):
+        vitoriasAzul = self.df[self.df["Winner"] == "Blue"]["Winner"].value_counts().head(1)[0]
+        vitoriasVermelhas = self.df[self.df["Winner"] == "Red"]["Winner"].value_counts().head(1)[0]
+    
+        return vitoriasVermelhas - vitoriasAzul
 
 a = UFCMaster()
 
@@ -214,19 +207,12 @@ print(a.derrotasSeguidas())
 print(a.maiorLuta())
 # Quantas lutas tiveram um número mínimo de rounds?
 print(a.menorLuta())
-# Qual o máximo de ataques significativos dados por minuto? 
-print(a.ataquesSignificativos())
 # Quantos anos tem o lutador mais velho? 
 print(a.idadeMaxima())
 # Quantas lutas aconteceram em uma arena vazia? 
 print(a.void())
-# Quantas vitórias por decisão unânime ocorreram? 
+# Quem ganhou mais lutas por decisão unânime? 
 print(a.decisao())
-# Quantas derrubadas o lado azul fez a cada 15 minutos? (B_avg_TD_landed)
-
-
-
 # Quantas vitórias o lado vermelho teve a mais que o azul?
-vitoriasAzul = a.df[a.df["Winner"] == "Blue"]["Winner"].value_counts().head(1)[0]
-vitoriasVermelhas = a.df[a.df["Winner"] == "Red"]["Winner"].value_counts().head(1)[0]
-print(vitoriasVermelhas - vitoriasAzul)
+print(a.diferenca())
+
