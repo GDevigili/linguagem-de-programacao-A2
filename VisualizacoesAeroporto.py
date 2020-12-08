@@ -2,6 +2,7 @@ import Conexao as con
 import pandas as pd
 import seaborn as sns
 
+
 conexao = con.Conexao()
 df = conexao.getCovidImpactDataFrame()
 conexao.fecharConexao() 
